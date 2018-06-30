@@ -9,6 +9,6 @@ package vn.com.meo.group.iforum.apps.base;
  *
  * @author loda
  */
-public class SeleniumConfig {
+public class BaseLogin {
     
 }

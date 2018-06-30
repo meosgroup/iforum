@@ -1,6 +1,7 @@
 # iforum
 
 **SETUP**
+
 You must install Firefox browsers in your os.
 Link download (Choose Beta version):
 https://www.mozilla.org/vi/firefox/channel/desktop/

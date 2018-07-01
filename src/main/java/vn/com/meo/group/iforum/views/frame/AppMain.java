@@ -146,7 +146,6 @@ public class AppMain extends javax.swing.JFrame {
 //        
         WebTreTho webTreTho = new WebTreTho();
         webTreTho.login("https://www.webtretho.com/forum/newthread.php?do=newthread&f=38", "namhn1495", "123456a@");
-        System.out.println("oke");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,7 +6,11 @@
 package vn.com.meo.group.iforum.views;
 
 import java.awt.Cursor;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import vn.com.meo.group.iforum.utils.Resources;
+import vn.com.meo.group.iforum.views.frame.AppMain;
 
 /**
  *
@@ -17,11 +21,13 @@ public class LoginPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoginPanel
      */
+    private AppMain parent;
     private Cursor cursorForcus = new Cursor(Cursor.HAND_CURSOR);
     private Cursor cursorDefault = new Cursor(Cursor.DEFAULT_CURSOR);
-    public LoginPanel() {
+    public LoginPanel(AppMain parent) {
+        this.parent = parent;
         initComponents();
-        this.setVisible(true);
+//        jLabel6.setIcon(new javax.swing.ImageIcon(Resources.images.get("forum-icon.png"))); // NOI18N
     }
 
     /**
@@ -35,8 +41,8 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tfUsername = new javax.swing.JTextField();
+        tfPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -57,20 +63,20 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel1.setText("Đăng Nhập");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 102, 255)));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfUsername.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tfUsername.setForeground(new java.awt.Color(51, 51, 51));
+        tfUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 102, 255)));
+        tfUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tfUsernameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 138, 190, 22));
+        jPanel1.add(tfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 138, 190, 22));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 102, 255)));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 216, 188, -1));
+        tfPassword.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tfPassword.setForeground(new java.awt.Color(51, 51, 51));
+        tfPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 102, 255)));
+        jPanel1.add(tfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 216, 188, -1));
 
         btnLogin.setBackground(new java.awt.Color(153, 102, 255));
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,13 +127,13 @@ public class LoginPanel extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 270, 338));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/forum-icon.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 376, 340));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/forum-icon.png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 376, 340));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tfUsernameActionPerformed
 
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
         // TODO add your handling code here:
@@ -141,7 +147,14 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "O na ni");
+        String username = tfUsername.getText();
+        String password = tfPassword.getText();
+        if(username.equals("admin") && password.equals("admin")){
+            this.setVisible(false);
+            parent.initTabs();
+        }else{
+            JOptionPane.showMessageDialog(this, "Username hoặc password không chính xác");
+        }
     }//GEN-LAST:event_btnLoginMouseClicked
 
 
@@ -153,7 +166,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField tfPassword;
+    private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
 }

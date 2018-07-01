@@ -153,11 +153,11 @@ public class AccounTab extends javax.swing.JPanel {
         }
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/images/icons8_User_25px.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_User_Menu_Male_25px_1.png"))); // NOI18N
         jLabel4.setText("Users");
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/images/icons8_Delete_User_Male_25px.png"))); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Delete_User_Male_25px.png"))); // NOI18N
         btnDelete.setText("Xóa");
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -170,7 +170,7 @@ public class AccounTab extends javax.swing.JPanel {
 
         btnEdit.setBackground(new java.awt.Color(255, 255, 255));
         btnEdit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/images/icons8_Edit_Account_25px.png"))); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Edit_Account_25px.png"))); // NOI18N
         btnEdit.setText("Sửa");
         btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {

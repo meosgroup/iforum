@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import vn.com.meo.group.iforum.views.tab.base.Tab;
-import vn.com.meo.group.iforum.util.R;
+import vn.com.meo.group.iforum.utils.Resources;
 import vn.com.meo.group.iforum.views.LoginPanel;
 import vn.com.meo.group.iforum.views.tab.base.AllForumTab;
 import vn.com.meo.group.iforum.views.tab.general.AccounTab;
@@ -37,15 +37,18 @@ public class AppMain extends javax.swing.JFrame {
     public static final int HEIGHT = 600;
     private Font fontTab = new Font("Tahoma", Font.BOLD, 16);
     private Font fontSubTab = new Font("Tahoma", Font.PLAIN, 14);
-
+    
+    private LoginPanel loginPanel;
     public AppMain(Splash splash) {
         this.splash = splash;
         initComponents();
         initDefaultConfig();
         //initTabs();
         mainTabbed.setVisible(false);
-        pnMain.add(new LoginPanel(), BorderLayout.CENTER);
+        loginPanel = new LoginPanel(this);
+        pnMain.add(loginPanel, BorderLayout.CENTER);
         this.splash.setVisible(false);
+        loginPanel.setVisible(true);
     }
 
     private void initDefaultConfig() {
@@ -58,7 +61,8 @@ public class AppMain extends javax.swing.JFrame {
 
     }
 
-    private void initTabs() {
+    public void initTabs() {
+        mainTabbed.setVisible(true);
         mainTabbed.setFont(fontTab);
         Tab webtretho = new Tab();
         webtretho.setFontTab(fontSubTab);
@@ -108,6 +112,14 @@ public class AppMain extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        
+        System.out.println(AppMain.class.getClass().getResource("/vn/com/meo/group/iforum/resources/images/forum-icon.png"));
+        System.out.println(AppMain.class.getClass().getResource("/"));
+        System.out.println(AppMain.class.getClass().getResource("."));
+        System.out.println(AppMain.class.getClass().getResource("./"));
+    
+//        System.exit(0);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -133,11 +145,9 @@ public class AppMain extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        final Splash splash = new Splash(R.strings.getString("Splash.title"),
-                R.images.getImage("Splash.icon"),
-                R.images.getImage("Splash.image"));
+        final Splash splash = new Splash(Resources.strings.get("IForum"),
+                Resources.images.get("app.png"), Resources.images.get("forum-icon.png"));
         splash.setVisible(true);
-
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {

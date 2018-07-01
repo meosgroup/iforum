@@ -364,7 +364,7 @@
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/main/resources/images/icons8_User_25px.png"/>
+                  <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_User_Menu_Male_25px_1.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Users"/>
               </Properties>
@@ -375,7 +375,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/main/resources/images/icons8_Delete_User_Male_25px.png"/>
+                  <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_Delete_User_Male_25px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
@@ -393,7 +393,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/main/resources/images/icons8_Edit_Account_25px.png"/>
+                  <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_Edit_Account_25px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>

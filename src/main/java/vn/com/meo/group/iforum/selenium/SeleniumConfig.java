@@ -26,18 +26,15 @@ public class SeleniumConfig {
     public static WebDriver getDefaultDriver(boolean isHeadless) {
         if (SystemUtils.IS_OS_WINDOWS) {
             System.out.println("Detect OS: Window");
-            System.setProperty("webdriver.gecko.driver", SeleniumConfig.class
-                    .getClassLoader().getResource(DRIVER_WIN).getPath());
+            System.setProperty("webdriver.gecko.driver", DRIVER_WIN);
         }
         if (SystemUtils.IS_OS_LINUX || SystemUtils.IS_OS_UNIX) {
             System.out.println("Detect OS: Linux");
-            System.setProperty("webdriver.gecko.driver", SeleniumConfig.class
-                    .getClassLoader().getResource(DRIVER_LINUX).getPath());
+            System.setProperty("webdriver.gecko.driver", DRIVER_LINUX);
         }
         if (SystemUtils.IS_OS_MAC) {
             System.out.println("Detect OS: Mac OS");
-            System.setProperty("webdriver.gecko.driver", SeleniumConfig.class
-                    .getClassLoader().getResource(DRIVER_MAC).getPath());
+            System.setProperty("webdriver.gecko.driver", DRIVER_MAC);
         }
 
         //Set Firefox Headless mode as TRUE

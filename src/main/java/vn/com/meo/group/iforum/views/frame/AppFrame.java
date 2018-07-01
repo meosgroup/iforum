@@ -7,13 +7,17 @@ package vn.com.meo.group.iforum.views.frame;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import javax.swing.UIManager;
+
+import vn.com.meo.group.iforum.utils.Resources;
 import vn.com.meo.group.iforum.views.tab.base.RegisterTab;
 import vn.com.meo.group.iforum.views.tab.base.Tab;
 import vn.com.meo.group.iforum.views.tab.general.GeneralTab;
 
 /**
- *
  * @author loda
  */
 public class AppFrame extends javax.swing.JFrame {
@@ -23,34 +27,50 @@ public class AppFrame extends javax.swing.JFrame {
      */
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
+
     public AppFrame() {
         try {
             // Set System L&F
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         initComponents();
         initDefaultConfig();
         initTabs();
-        
+
+
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new File("resources/temp.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while (sc.hasNextLine()) {
+            System.out.println(sc.nextLine());
+        }
+
+
     }
-    public void initDefaultConfig(){
-        this.setSize(WIDTH,HEIGHT);
+
+    public void initDefaultConfig() {
+        this.setSize(WIDTH, HEIGHT);
         this.setResizable(false);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         //center screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
-    public void initTabs(){
-        
+
+    public void initTabs() {
+
         mainTabbed.addTab("Tổng hợp", new GeneralTab());
         Tab webtretho = new Tab();
         webtretho.addSubTab("Tài khoản", new RegisterTab());
         mainTabbed.addTab("Webtretho", webtretho);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,12 +89,12 @@ public class AppFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mainTabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mainTabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -87,7 +107,7 @@ public class AppFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

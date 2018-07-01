@@ -5,6 +5,7 @@
  */
 package vn.com.meo.group.iforum.views.tab.base;
 
+import java.awt.Font;
 import javax.swing.JPanel;
 
 /**
@@ -22,6 +23,9 @@ public class Tab extends javax.swing.JPanel {
     public void addSubTab(String name,JPanel subtab){
         this.contentTab.add(name,subtab);
     }
+    public void setFontTab(Font font){
+        this.contentTab.setFont(font);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +38,8 @@ public class Tab extends javax.swing.JPanel {
         contentTab = new javax.swing.JTabbedPane();
 
         setPreferredSize(new java.awt.Dimension(900, 600));
+
+        contentTab.setBackground(new java.awt.Color(153, 153, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -23,6 +23,10 @@ public abstract class Block {
         this.driver = SeleniumConfig.getDefaultDriver(headless);
     }
     
+    public Block(WebDriver driver) {
+        this.driver = driver;
+    }
+    
     public WebDriver getDriver() {
         return this.driver;
     }

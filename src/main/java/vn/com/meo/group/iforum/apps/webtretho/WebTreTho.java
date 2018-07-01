@@ -48,7 +48,6 @@ public class WebTreTho extends ToolBase{
         JOptionPane.showMessageDialog(null, "Đã xác thực capcha?");
         
         register.clickSubmit();
-        register.closeDriver();
     }
 
     @Override

@@ -145,7 +145,7 @@ public class AppMain extends javax.swing.JFrame {
 //        });
 //        
         WebTreTho webTreTho = new WebTreTho();
-        webTreTho.register("https://www.webtretho.com/forum/forum/register.php", "ibl4ck", "buiduonga4", "buianhduong96@gmail.com");
+        webTreTho.register("https://www.webtretho.com/forum/forum/register.php", "ibl4ck", "buiduonga4", "buianhduong001@gmail.com");
         System.out.println("oke");
     }
 

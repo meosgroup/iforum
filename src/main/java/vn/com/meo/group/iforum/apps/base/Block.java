@@ -60,7 +60,10 @@ public abstract class Block {
     }
     
     public void sleep(Integer time) {
-        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+        this.driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
     }
     
+    public void resetCookies() {
+        this.driver.manage().deleteAllCookies();
+    }
 }

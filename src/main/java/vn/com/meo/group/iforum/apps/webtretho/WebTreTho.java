@@ -20,12 +20,18 @@ public class WebTreTho extends ToolBase{
     
     @Override
     public void login(String linkUrl, String username, String password) {
-        LoginBlock login = new LoginBlock(true);
+        LoginBlock login = new LoginBlock(false);
+        // go to url
         login.gotoUrl(linkUrl);
+        // set input
         login.setUsername(username);
         login.setPassword(password);
         login.clickSubmit();
-        login.sleep(50);
+        login.sleep(10);
+        // reset cookie
+        login.resetCookies();
+        login.gotoUrl(linkUrl);
+        login.sleep(20);
         login.closeDriver();
     }
 

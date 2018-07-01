@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import vn.com.meo.group.iforum.apps.webtretho.WebTreTho;
 import vn.com.meo.group.iforum.views.tab.base.Tab;
 import vn.com.meo.group.iforum.utils.Resources;
 import vn.com.meo.group.iforum.views.LoginPanel;
@@ -112,53 +113,40 @@ public class AppMain extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
-        System.out.println(AppMain.class.getClass().getResource("/vn/com/meo/group/iforum/resources/images/forum-icon.png"));
-        System.out.println(AppMain.class.getClass().getResource("/"));
-        System.out.println(AppMain.class.getClass().getResource("."));
-        System.out.println(AppMain.class.getClass().getResource("./"));
-    
-//        System.exit(0);
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        final Splash splash = new Splash(Resources.strings.get("IForum"),
-                Resources.images.get("app.png"), Resources.images.get("forum-icon.png"));
-        splash.setVisible(true);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(AppMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new AppMain(splash).setVisible(true);
-            }
-        });
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Windows".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(AppMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        final Splash splash = new Splash(Resources.strings.get("IForum"),
+//                Resources.images.get("app.png"), Resources.images.get("forum-icon.png"));
+//        splash.setVisible(true);
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(AppMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new AppMain(splash).setVisible(true);
+//            }
+//        });
+//        
+        WebTreTho webTreTho = new WebTreTho();
+        webTreTho.register("https://www.webtretho.com/forum/forum/register.php", "ibl4ck", "buiduonga4", "buianhduong96@gmail.com");
+        System.out.println("oke");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,7 +5,6 @@
  */
 package vn.com.meo.group.iforum.apps.webtretho.block;
 
-import org.openqa.selenium.WebElement;
 import vn.com.meo.group.iforum.apps.base.Block;
 
 /**

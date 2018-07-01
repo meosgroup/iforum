@@ -5,6 +5,7 @@
  */
 package vn.com.meo.group.iforum.apps.webtretho;
 
+import javax.swing.JOptionPane;
 import vn.com.meo.group.iforum.apps.base.ToolBase;
 import vn.com.meo.group.iforum.apps.webtretho.block.LoginBlock;
 import vn.com.meo.group.iforum.apps.webtretho.block.LoginPostBlock;
@@ -20,12 +21,10 @@ public class WebTreTho extends ToolBase{
     @Override
     public void login(String linkUrl, String username, String password) {
         LoginBlock login = new LoginBlock(true);
-        
         login.gotoUrl(linkUrl);
         login.setUsername(username);
         login.setPassword(password);
         login.clickSubmit();
-        
         login.sleep(50);
         login.closeDriver();
     }
@@ -40,7 +39,7 @@ public class WebTreTho extends ToolBase{
         register.setEmail(email);
         register.setPassword(password);
         
-        register.sleep(500);
+        JOptionPane.showMessageDialog(null, "Đã xác thực capcha?");
         
         register.clickSubmit();
         register.closeDriver();
@@ -69,6 +68,5 @@ public class WebTreTho extends ToolBase{
     @Override
     public void comment(String linkUrl, String comment) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    } 
 }

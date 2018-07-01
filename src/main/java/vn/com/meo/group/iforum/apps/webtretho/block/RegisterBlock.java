@@ -18,18 +18,18 @@ public class RegisterBlock extends Block{
     }
     
     public void setUsername(String username) {
-        this.findElementByName("nameUser").sendKeys(username);
+        this.findElementByName("username").sendKeys(username);
     }
     
     public void setEmail(String email) {
-        this.findElementByName("nameEmail").sendKeys(email);
+        this.findElementByName("email").sendKeys(email);
     }
     
     public void setPassword(String password) {
-        this.findElementByName("namePass").sendKeys(password);
+        this.findElementByName("password").sendKeys(password);
     }
     
     public void clickSubmit() {
-        this.findElementByClass("classButtonRes").click();
+        this.findElementByClass("btnSend").click();
     }
 }

@@ -39,7 +39,7 @@ public class LoginPostBlock extends Block {
     }
     
     public void setContent(String content) {
-        this.actionInput(this.findElementById("subject"), content);
+        this.actionInput(this.findElementById("cke_contents_vB_Editor_001_editor"), content);
     }
     
     public void clickPost() {

@@ -39,7 +39,7 @@ public class Tab extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(900, 600));
 
-        contentTab.setBackground(new java.awt.Color(153, 153, 255));
+        contentTab.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

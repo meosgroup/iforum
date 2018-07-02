@@ -46,7 +46,6 @@ public class WebTreTho extends ToolBase{
         register.setPassword(password);
         
         JOptionPane.showMessageDialog(null, "Đã xác thực capcha?");
-        
         register.clickSubmit();
     }
 

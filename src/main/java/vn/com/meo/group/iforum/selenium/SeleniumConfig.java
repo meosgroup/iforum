@@ -8,10 +8,14 @@ package vn.com.meo.group.iforum.selenium;
 import java.net.URL;
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
 /**
  *
@@ -38,24 +42,13 @@ public class SeleniumConfig {
         }
 
         //Set Firefox Headless mode as TRUE
+        FirefoxOptions options = new FirefoxOptions();
+        options.addPreference("general.useragent.override", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36");
         if (isHeadless) {
-            FirefoxOptions options = new FirefoxOptions();
             options.setHeadless(true);
-
-            //Instantiate Web Driver
-            return new FirefoxDriver(options);
         }
         //System.setProperty("webdriver.chrome.driver","chromedriver.exe");
         //WebDriver driver = new ChromeDriver();
-        return new FirefoxDriver();
+        return new FirefoxDriver(options);
     }
-
-    public static void main(String[] args) {
-        WebDriver driver = SeleniumConfig.getDefaultDriver(true);
-        driver.get("http://www.google.com");
-        System.out.println("Page title is - " + driver.getTitle());
-
-        //Search on Google
-    }
-
 }

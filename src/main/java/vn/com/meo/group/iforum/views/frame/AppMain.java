@@ -6,14 +6,11 @@ package vn.com.meo.group.iforum.views.frame;
  * and open the template in the editor.
  */
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import vn.com.meo.group.iforum.apps.webtretho.WebTreTho;
 import vn.com.meo.group.iforum.views.tab.base.Tab;
 import vn.com.meo.group.iforum.utils.Resources;
@@ -22,7 +19,10 @@ import vn.com.meo.group.iforum.views.tab.base.AllForumTab;
 import vn.com.meo.group.iforum.views.tab.general.AccounTab;
 import vn.com.meo.group.iforum.views.tab.general.CommentCategoryTab;
 import vn.com.meo.group.iforum.views.tab.general.CommentContentTab;
+import vn.com.meo.group.iforum.views.tab.general.EnterCategoryTab;
+import vn.com.meo.group.iforum.views.tab.general.PostNewsTab;
 import vn.com.meo.group.iforum.views.tab.general.PostsLinkTab;
+import vn.com.meo.group.iforum.views.tab.general.AddCategoryTab;
 
 /**
  *
@@ -38,7 +38,7 @@ public class AppMain extends javax.swing.JFrame {
     public static final int HEIGHT = 600;
     private Font fontTab = new Font("Tahoma", Font.BOLD, 16);
     private Font fontSubTab = new Font("Tahoma", Font.PLAIN, 14);
-    
+    private Color backGroundColor = new Color(255,255,255);
     private LoginPanel loginPanel;
     public AppMain(Splash splash) {
         this.splash = splash;
@@ -65,13 +65,25 @@ public class AppMain extends javax.swing.JFrame {
     public void initTabs() {
         mainTabbed.setVisible(true);
         mainTabbed.setFont(fontTab);
+        //tab tong hop
+        mainTabbed.addTab("Tông Hợp", new AllForumTab());
+        
+        //tab dang tin tong hop
+        Tab dangTinTongHop = new Tab();
+        dangTinTongHop.setBackground(backGroundColor);
+        dangTinTongHop.setFontTab(fontSubTab);
+        dangTinTongHop.addSubTab("Đăng Tin", new PostNewsTab());
+        dangTinTongHop.addSubTab("Nhập Chuyên Mục", new EnterCategoryTab());
+        dangTinTongHop.addSubTab("Tạo Chuyên Mục", new  AddCategoryTab());
+        mainTabbed.addTab("Đăng Tin Tổng Hợp", dangTinTongHop);
+        //tab webtretho
         Tab webtretho = new Tab();
+        webtretho.setBackground(backGroundColor);
         webtretho.setFontTab(fontSubTab);
         webtretho.addSubTab("Tài Khoản", new AccounTab());
         webtretho.addSubTab("Link Bài Viết", new PostsLinkTab());
         webtretho.addSubTab("Nội Dung Comment", new CommentContentTab());
         webtretho.addSubTab("Phân Loại Bình Luận", new CommentCategoryTab());
-        mainTabbed.addTab("Tông Hợp", new AllForumTab());
         mainTabbed.addTab("webtretho", webtretho);
     }
 
@@ -91,8 +103,13 @@ public class AppMain extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(900, 600));
         setSize(new java.awt.Dimension(909, 600));
 
-        pnMain.setBackground(new java.awt.Color(153, 153, 255));
+        pnMain.setBackground(new java.awt.Color(255, 255, 255));
         pnMain.setLayout(new java.awt.BorderLayout());
+
+        mainTabbed.setBackground(new java.awt.Color(255, 255, 255));
+        mainTabbed.setMaximumSize(new java.awt.Dimension(900, 600));
+        mainTabbed.setMinimumSize(new java.awt.Dimension(900, 600));
+        mainTabbed.setPreferredSize(new java.awt.Dimension(900, 600));
         pnMain.add(mainTabbed, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,6 +160,9 @@ public class AppMain extends javax.swing.JFrame {
                 new AppMain(splash).setVisible(true);
             }
         });
+        
+//        WebTreTho w= new WebTreTho();
+//        w.register("https://www.webtretho.com/forum/forum/register.php", "iiblack", "buiduonga4", "buianhduong001@gmail.com");
     }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

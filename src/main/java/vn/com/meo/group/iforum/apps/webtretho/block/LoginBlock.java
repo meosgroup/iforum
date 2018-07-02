@@ -5,6 +5,7 @@
  */
 package vn.com.meo.group.iforum.apps.webtretho.block;
 
+import org.openqa.selenium.WebDriver;
 import vn.com.meo.group.iforum.apps.base.Block;
 
 /**
@@ -12,9 +13,13 @@ import vn.com.meo.group.iforum.apps.base.Block;
  * @author ducvu
  */
 public class LoginBlock extends Block{
-    
+
     public LoginBlock(boolean headless) {
         super(headless);
+    }
+
+    public LoginBlock(WebDriver driver) {
+        super(driver);
     }
     
     public void setUsername(String username) {

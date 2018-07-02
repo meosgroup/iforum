@@ -5,6 +5,7 @@
  */
 package vn.com.meo.group.iforum.apps.webtretho.block;
 
+import org.openqa.selenium.WebDriver;
 import vn.com.meo.group.iforum.apps.base.Block;
 
 /**
@@ -13,6 +14,10 @@ import vn.com.meo.group.iforum.apps.base.Block;
  */
 public class LoginPostBlock extends Block {
     
+    public LoginPostBlock(WebDriver driver) {
+        super(driver);
+    }
+
     public LoginPostBlock(boolean headless) {
         super(headless);
     }

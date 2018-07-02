@@ -213,6 +213,7 @@ public class AccounTab extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Thêm");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Đăng Kí Hằng Loạt");
@@ -299,42 +300,20 @@ public class AccounTab extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnBackPage;
-    private javax.swing.JLabel btnBackPage1;
     private javax.swing.JLabel btnBackPage2;
-    private javax.swing.JLabel btnDelete;
-    private javax.swing.JLabel btnDelete1;
     private javax.swing.JLabel btnDelete2;
-    private javax.swing.JLabel btnEdit;
-    private javax.swing.JLabel btnEdit1;
     private javax.swing.JLabel btnEdit2;
-    private javax.swing.JLabel btnNextPage;
-    private javax.swing.JLabel btnNextPage1;
     private javax.swing.JLabel btnNextPage2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JLabel lbCurrentPageUser;
-    private javax.swing.JLabel lbCurrentPageUser1;
     private javax.swing.JLabel lbCurrentPageUser2;
-    private javax.swing.JTextField txtFindUser;
-    private javax.swing.JTextField txtFindUser1;
     private javax.swing.JTextField txtFindUser2;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;

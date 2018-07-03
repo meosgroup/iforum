@@ -14,6 +14,7 @@ public class Account {
     private String username;
     private String password;
     private Website web;
+    private int register;
 
     public Account() {
     }
@@ -34,6 +35,22 @@ public class Account {
         this.username = username;
         this.password = password;
         this.web = web;
+    }
+
+    public Account(int id, String username, String password, Website web, int register) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.web = web;
+        this.register = register;
+    }
+
+    public int getRegister() {
+        return register;
+    }
+
+    public void setRegister(int register) {
+        this.register = register;
     }
 
     public Website getWeb() {

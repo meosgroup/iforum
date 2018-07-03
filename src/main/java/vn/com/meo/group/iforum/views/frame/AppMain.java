@@ -5,13 +5,22 @@ package vn.com.meo.group.iforum.views.frame;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import vn.com.meo.group.iforum.apps.webtretho.WebTreTho;
+import vn.com.meo.group.iforum.apps.webtretho.WebTreThoRequest;
 import vn.com.meo.group.iforum.views.tab.base.Tab;
 import vn.com.meo.group.iforum.utils.Resources;
 import vn.com.meo.group.iforum.views.LoginPanel;
@@ -129,7 +138,7 @@ public class AppMain extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws UnirestException, IOException {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -160,9 +169,15 @@ public class AppMain extends javax.swing.JFrame {
                 new AppMain(splash).setVisible(true);
             }
         });
+//   
+//        WebTreThoRequest w = new WebTreThoRequest();
+//        w.login("namhn1495", "123456a@");
+//        w.post("https://www.webtretho.com/forum/newthread.php?do=newthread&f=110", "Xin review du lịch cô tô", "Chào cả nhà, hè này mình"
+//                + "có dự định đi cô tô, các bạn ai đi rồi cho mình xin ít review được không. trung bình mỗi người hết bao nhiêu tiền ạ");
+//        w.replyComment("https://www.webtretho.com/forum/newreply.php?do=newreply&p=36625533", "cảm ơn bạn. <3");
+//        w.comment("2266218", "cam on ban, bai viet rat bo ich");
+//        System.out.println(w.isRegister("iblack"));
         
-//        WebTreTho w= new WebTreTho();
-//        w.register("https://www.webtretho.com/forum/forum/register.php", "iiblack", "buiduonga4", "buianhduong001@gmail.com");
     }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

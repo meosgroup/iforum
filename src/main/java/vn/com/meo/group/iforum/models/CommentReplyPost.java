@@ -16,7 +16,7 @@ public class CommentReplyPost {
     private Post post;
     private Account acc;
     private Comment comment;
-    private long date;
+    private long date; //vi khong co kieu date trong db nen la khi su dung se ep ve date.
     private String type;
 
     public CommentReplyPost(int id, Post post, Account acc, Comment comment, long date, String type) {

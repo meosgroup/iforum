@@ -13,8 +13,6 @@ public class CategoryComment {
 
     private int id;
     private String name;
-    private String contentComment;
-    private String contentReply;
 
     public CategoryComment(int id, String name) {
         this.id = id;
@@ -23,30 +21,7 @@ public class CategoryComment {
 
     public CategoryComment() {
     }
-
-    public CategoryComment(int id, String name, String contentComment, String contentReply) {
-        this.id = id;
-        this.name = name;
-        this.contentComment = contentComment;
-        this.contentReply = contentReply;
-    }
-
-    public String getContentComment() {
-        return contentComment;
-    }
-
-    public void setContentComment(String contentComment) {
-        this.contentComment = contentComment;
-    }
-
-    public String getContentReply() {
-        return contentReply;
-    }
-
-    public void setContentReply(String contentReply) {
-        this.contentReply = contentReply;
-    }
-
+    
     public int getId() {
         return id;
     }

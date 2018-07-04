@@ -13,23 +13,15 @@ import java.sql.Date;
  */
 public class Comment {
     private int id;
-    private Post post;
-    private String content;
+    private String contentComment;
+    private String contentReply;
     private CategoryComment category;
-    private Account account;
-    private Date timeComment;
-    private String type;
-    private Comment comment;
 
-    public Comment(int id, Post post, String content, CategoryComment category, Account account, Date timeComment, String type, Comment comment) {
+    public Comment(int id, String contentComment, String contentReply, CategoryComment category) {
         this.id = id;
-        this.post = post;
-        this.content = content;
+        this.contentComment = contentComment;
+        this.contentReply = contentReply;
         this.category = category;
-        this.account = account;
-        this.timeComment = timeComment;
-        this.type = type;
-        this.comment = comment;
     }
 
     public Comment() {
@@ -43,20 +35,20 @@ public class Comment {
         this.id = id;
     }
 
-    public Post getPost() {
-        return post;
+    public String getContentComment() {
+        return contentComment;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setContentComment(String contentComment) {
+        this.contentComment = contentComment;
     }
 
-    public String getContent() {
-        return content;
+    public String getContentReply() {
+        return contentReply;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContentReply(String contentReply) {
+        this.contentReply = contentReply;
     }
 
     public CategoryComment getCategory() {
@@ -65,38 +57,6 @@ public class Comment {
 
     public void setCategory(CategoryComment category) {
         this.category = category;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Date getTimeComment() {
-        return timeComment;
-    }
-
-    public void setTimeComment(Date timeComment) {
-        this.timeComment = timeComment;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
     }
     
 }

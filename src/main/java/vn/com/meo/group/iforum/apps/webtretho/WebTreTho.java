@@ -19,7 +19,8 @@ public class WebTreTho extends ToolBase{
     
     
     @Override
-    public void login(String linkUrl, String username, String password) {
+    public void login(String username, String password) {
+        String linkUrl = null;
         LoginBlock login = new LoginBlock(false);
         // go to url
         login.gotoUrl(linkUrl);
@@ -36,7 +37,8 @@ public class WebTreTho extends ToolBase{
     }
 
     @Override
-    public void register(String linkUrl, String username, String password, String email) {
+    public void register(String username, String password, String email) {
+        String linkUrl = null;
         RegisterBlock register = new RegisterBlock(false);
         
         register.gotoUrl(linkUrl);
@@ -50,12 +52,12 @@ public class WebTreTho extends ToolBase{
     }
 
     @Override
-    public void post(String username, String password, String linkUrl, String title, String content) {
+    public void post(String linkUrl, String title, String content) {
         LoginPostBlock post = new LoginPostBlock(true);
         post.gotoUrl(linkUrl);
 //        login
-        post.setUsername(username);
-        post.setPassword(password);
+//        post.setUsername(username);
+//        post.setPassword(password);
         post.clickSubmit();
         
         post.sleep(50);
@@ -72,4 +74,24 @@ public class WebTreTho extends ToolBase{
     @Override
     public void comment(String linkUrl, String comment) {
     } 
+
+    @Override
+    public boolean isLogin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void logout() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isRegister(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void replyComment(String linkUrl, String comment) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

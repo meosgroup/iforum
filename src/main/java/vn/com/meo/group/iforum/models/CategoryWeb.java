@@ -15,14 +15,12 @@ public class CategoryWeb {
     private int id;
     private String categoryName;
     private String url;
-    private int idParent;
     private ArrayList<CategoryWeb> listCategoryChild;
 
-    public CategoryWeb(int id, String categoryName, String url, int idParent, ArrayList<CategoryWeb> listCategoryChild) {
+    public CategoryWeb(int id, String categoryName, String url,ArrayList<CategoryWeb> listCategoryChild) {
         this.id = id;
         this.categoryName = categoryName;
         this.url = url;
-        this.idParent = idParent;
         this.listCategoryChild = listCategoryChild;
     }
 
@@ -34,7 +32,6 @@ public class CategoryWeb {
         this.id = id;
         this.categoryName = categoryName;
         this.url = url;
-        this.idParent = idParent;
         listCategoryChild = new ArrayList<>();
     }
 
@@ -60,14 +57,6 @@ public class CategoryWeb {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public int getIdParent() {
-        return idParent;
-    }
-
-    public void setIdParent(int idParent) {
-        this.idParent = idParent;
     }
 
     public ArrayList<CategoryWeb> getListCategoryChild() {

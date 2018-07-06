@@ -1,5 +1,6 @@
 package vn.com.meo.group.iforum.utils;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -25,5 +26,9 @@ public class Resources {
             }
             return tmp;
         }
+    }
+    
+    public static class fonts{
+        public static Font Tahoma14 = new Font("Tahoma", Font.PLAIN, 14);
     }
 }

@@ -13,9 +13,9 @@ public class Account {
     private int id;
     private String username;
     private String password;
-    private Website web;
+    private String email;
     private int register;
-
+    
     public Account() {
     }
 
@@ -30,19 +30,11 @@ public class Account {
         this.password = password;
     }
 
-    public Account(int id, String username, String password, Website web) {
+    public Account(int id, String username, String password, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.web = web;
-    }
-
-    public Account(int id, String username, String password, Website web, int register) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.web = web;
-        this.register = register;
+        this.email = email;
     }
 
     public int getRegister() {
@@ -51,14 +43,6 @@ public class Account {
 
     public void setRegister(int register) {
         this.register = register;
-    }
-
-    public Website getWeb() {
-        return web;
-    }
-
-    public void setWeb(Website web) {
-        this.web = web;
     }
 
     public int getId() {
@@ -83,6 +67,25 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    @Override
+    public boolean equals(Object account){
+        if (account instanceof Account){
+            if(this.username.equals(((Account)account).getUsername()) || 
+                    this.email.equals(((Account)account).getEmail())){
+                return true;
+            }
+        }
+        return false;
     }
     
 }

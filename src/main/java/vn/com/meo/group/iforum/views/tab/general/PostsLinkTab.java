@@ -37,10 +37,10 @@ public class PostsLinkTab extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JLabel();
         btnEdit = new javax.swing.JLabel();
-        btnBackPage = new javax.swing.JLabel();
-        btnNextPage = new javax.swing.JLabel();
-        lbCurrentPageUser = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        btnNextPage = new javax.swing.JButton();
+        lbCurrentPageUser = new javax.swing.JLabel();
+        btnBackPage = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -126,40 +126,22 @@ public class PostsLinkTab extends javax.swing.JPanel {
             }
         });
 
-        btnBackPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Back_To_25px.png"))); // NOI18N
-        btnBackPage.setToolTipText("Back Page");
-        btnBackPage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBackPageMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBackPageMouseExited(evt);
-            }
-        });
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Start_25px.png"))); // NOI18N
+        jLabel12.setText("Chạy");
 
         btnNextPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Next_page_25px.png"))); // NOI18N
-        btnNextPage.setToolTipText("Next Page");
-        btnNextPage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnNextPageMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNextPageMouseExited(evt);
-            }
-        });
 
         lbCurrentPageUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbCurrentPageUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbCurrentPageUser.setText("1");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Start_25px.png"))); // NOI18N
-        jLabel12.setText("Chạy");
+        btnBackPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Back_To_25px.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,11 +154,11 @@ public class PostsLinkTab extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel12))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnBackPage)
-                        .addGap(10, 10, 10)
+                        .addComponent(btnBackPage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbCurrentPageUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnNextPage)
+                        .addComponent(btnNextPage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -192,10 +174,10 @@ public class PostsLinkTab extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBackPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNextPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbCurrentPageUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNextPage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbCurrentPageUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBackPage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -297,7 +279,6 @@ public class PostsLinkTab extends javax.swing.JPanel {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1, 0, 202, Short.MAX_VALUE)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -336,8 +317,8 @@ public class PostsLinkTab extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -361,32 +342,12 @@ public class PostsLinkTab extends javax.swing.JPanel {
         btnEdit.setCursor(cursorDefault);
     }//GEN-LAST:event_btnEditMouseExited
 
-    private void btnBackPageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackPageMouseEntered
-        // TODO add your handling code here:
-        btnBackPage.setCursor(cursorForcus);
-    }//GEN-LAST:event_btnBackPageMouseEntered
-
-    private void btnBackPageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackPageMouseExited
-        // TODO add your handling code here:
-        btnBackPage.setCursor(cursorDefault);
-    }//GEN-LAST:event_btnBackPageMouseExited
-
-    private void btnNextPageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextPageMouseEntered
-        // TODO add your handling code here:
-        btnNextPage.setCursor(cursorForcus);
-    }//GEN-LAST:event_btnNextPageMouseEntered
-
-    private void btnNextPageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextPageMouseExited
-        // TODO add your handling code here:
-        btnNextPage.setCursor(cursorDefault);
-    }//GEN-LAST:event_btnNextPageMouseExited
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnBackPage;
+    private javax.swing.JButton btnBackPage;
     private javax.swing.JLabel btnDelete;
     private javax.swing.JLabel btnEdit;
-    private javax.swing.JLabel btnNextPage;
+    private javax.swing.JButton btnNextPage;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;

@@ -14,31 +14,47 @@ import java.util.List;
  */
 public class Website {
     private int id;
-    private String nameWeb;
-    private List<CategoryWeb> listCategoryWeb;
-
-    public Website() {
-        listCategoryWeb = new ArrayList<>();
-    }
-
+    private String name;
+    private ArrayList<CategoryWeb> categoryWebs;
+    private ArrayList<Account> accounts;
+    private ArrayList<CommentReplyCategory> categoryCommentReplys;
     public Website(int id, String nameWeb) {
         this.id = id;
-        this.nameWeb = nameWeb;
-        listCategoryWeb = new ArrayList<>();
+        this.name = nameWeb;
+        categoryWebs = new ArrayList<>();
     }
 
-    public Website(int id, String nameWeb, List<CategoryWeb> listCategoryWeb) {
+    public Website(int id, String nameWeb, ArrayList<CategoryWeb> categoryWebs) {
         this.id = id;
-        this.nameWeb = nameWeb;
-        this.listCategoryWeb = listCategoryWeb;
+        this.name = nameWeb;
+        this.categoryWebs = categoryWebs;
     }
 
-    public List<CategoryWeb> getListCategoryWeb() {
-        return listCategoryWeb;
+    public Website(int id, String nameWeb, ArrayList<CategoryWeb> categoryWebs, ArrayList<Account> accounts) {
+        this.id = id;
+        this.name = nameWeb;
+        this.categoryWebs = categoryWebs;
+        this.accounts = accounts;
     }
 
-    public void setListCategoryWeb(List<CategoryWeb> listCategoryWeb) {
-        this.listCategoryWeb = listCategoryWeb;
+    public Website(int id, String nameWeb, ArrayList<CategoryWeb> categoryWebs, ArrayList<Account> accounts, ArrayList<CommentReplyCategory> categoryCommentReplys) {
+        this.id = id;
+        this.name = nameWeb;
+        this.categoryWebs = categoryWebs;
+        this.accounts = accounts;
+        this.categoryCommentReplys = categoryCommentReplys;
+    }
+
+    public Website() {
+    }
+    
+
+    public ArrayList<CategoryWeb> getCategoryWebs() {
+        return categoryWebs;
+    }
+
+    public void setCategoryWebs(ArrayList<CategoryWeb> categoryWebs) {
+        this.categoryWebs = categoryWebs;
     }
 
     public int getId() {
@@ -49,12 +65,27 @@ public class Website {
         this.id = id;
     }
 
-    public String getNameWeb() {
-        return nameWeb;
+    public String getName() {
+        return name;
     }
 
     public void setNameWeb(String nameWeb) {
-        this.nameWeb = nameWeb;
+        this.name = nameWeb;
     }
-    
+
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(ArrayList<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public ArrayList<CommentReplyCategory> getCategoryCommentReplys() {
+        return categoryCommentReplys;
+    }
+
+    public void setCategoryCommentReplys(ArrayList<CommentReplyCategory> categoryCommentReplys) {
+        this.categoryCommentReplys = categoryCommentReplys;
+    }
 }

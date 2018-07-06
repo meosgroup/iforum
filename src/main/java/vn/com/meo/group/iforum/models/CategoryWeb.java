@@ -13,29 +13,21 @@ import java.util.ArrayList;
  */
 public class CategoryWeb {
     private int id;
-    private String categoryName;
+    private String name;
     private String url;
-    private int idParent;
-    private ArrayList<CategoryWeb> listCategoryChild;
+    private ArrayList<CategoryWeb> categoryChilds;
+    
 
-    public CategoryWeb(int id, String categoryName, String url, int idParent, ArrayList<CategoryWeb> listCategoryChild) {
+    public CategoryWeb(int id, String name, String url, ArrayList<CategoryWeb> categoryChilds) {
         this.id = id;
-        this.categoryName = categoryName;
+        this.name = name;
         this.url = url;
-        this.idParent = idParent;
-        this.listCategoryChild = listCategoryChild;
+        this.categoryChilds = categoryChilds;
     }
 
-    public CategoryWeb() {
-        listCategoryChild = new ArrayList<>();
-    }
-
-    public CategoryWeb(int id, String categoryName, String url, int idParent) {
-        this.id = id;
-        this.categoryName = categoryName;
+    public CategoryWeb(String name, String url) {
+        this.name = name;
         this.url = url;
-        this.idParent = idParent;
-        listCategoryChild = new ArrayList<>();
     }
 
     public int getId() {
@@ -46,14 +38,6 @@ public class CategoryWeb {
         this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
     public String getUrl() {
         return url;
     }
@@ -62,21 +46,20 @@ public class CategoryWeb {
         this.url = url;
     }
 
-    public int getIdParent() {
-        return idParent;
+    public String getName() {
+        return name;
     }
 
-    public void setIdParent(int idParent) {
-        this.idParent = idParent;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ArrayList<CategoryWeb> getListCategoryChild() {
-        return listCategoryChild;
+    public ArrayList<CategoryWeb> getCategoryChilds() {
+        return categoryChilds;
     }
 
-    public void setListCategoryChild(ArrayList<CategoryWeb> listCategoryChild) {
-        this.listCategoryChild = listCategoryChild;
+    public void setCategoryChilds(ArrayList<CategoryWeb> categoryChilds) {
+        this.categoryChilds = categoryChilds;
     }
-    
     
 }

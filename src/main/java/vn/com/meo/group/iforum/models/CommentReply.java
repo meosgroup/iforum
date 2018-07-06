@@ -5,26 +5,23 @@
  */
 package vn.com.meo.group.iforum.models;
 
-import java.sql.Date;
-
 /**
  *
  * @author nguye
  */
-public class Comment {
+public class CommentReply {
     private int id;
     private String contentComment;
     private String contentReply;
-    private CategoryComment category;
 
-    public Comment(int id, String contentComment, String contentReply, CategoryComment category) {
+    public CommentReply(int id, String contentComment, String contentReply) {
         this.id = id;
         this.contentComment = contentComment;
         this.contentReply = contentReply;
-        this.category = category;
     }
-
-    public Comment() {
+    public CommentReply(String contentComment, String contentReply) {
+        this.contentComment = contentComment;
+        this.contentReply = contentReply;
     }
 
     public int getId() {
@@ -50,13 +47,4 @@ public class Comment {
     public void setContentReply(String contentReply) {
         this.contentReply = contentReply;
     }
-
-    public CategoryComment getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryComment category) {
-        this.category = category;
-    }
-    
 }

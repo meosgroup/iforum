@@ -77,7 +77,6 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jComboBox1" pref="202" max="32767" attributes="0"/>
                           <Component id="jComboBox2" max="32767" attributes="0"/>
@@ -125,8 +124,8 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel4" min="-2" pref="282" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -137,8 +136,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
+              <Component id="jScrollPane1" alignment="0" pref="810" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -151,11 +150,11 @@
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="btnBackPage" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="btnBackPage" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lbCurrentPageUser" min="-2" pref="20" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnNextPage" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNextPage" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -176,10 +175,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="198" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnBackPage" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnNextPage" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnNextPage" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="lbCurrentPageUser" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="btnBackPage" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -304,29 +303,20 @@
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEditMouseExited"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="btnBackPage">
+        <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_Back_To_25px.png"/>
+              <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_Start_25px.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Back Page"/>
+            <Property name="text" type="java.lang.String" value="Ch&#x1ea1;y"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBackPageMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBackPageMouseExited"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="btnNextPage">
+        <Component class="javax.swing.JButton" name="btnNextPage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_Next_page_25px.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Next Page"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNextPageMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNextPageMouseExited"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbCurrentPageUser">
           <Properties>
@@ -337,12 +327,11 @@
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
+        <Component class="javax.swing.JButton" name="btnBackPage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_Start_25px.png"/>
+              <Image iconType="3" name="/vn/com/meo/group/iforum/resources/images/icons8_Back_To_25px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ea1;y"/>
           </Properties>
         </Component>
       </SubComponents>

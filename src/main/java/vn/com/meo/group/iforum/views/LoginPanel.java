@@ -5,12 +5,12 @@
  */
 package vn.com.meo.group.iforum.views;
 
+import vn.com.meo.group.iforum.views.frame.AppMain;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import vn.com.meo.group.iforum.utils.Resources;
-import vn.com.meo.group.iforum.views.frame.AppMain;
 
 /**
  *

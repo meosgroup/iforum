@@ -15,11 +15,11 @@ public class CommentReplyPost {
     private int id;
     private Post post;
     private Account acc;
-    private Comment comment;
+    private CommentReply comment;
     private long date; //vi khong co kieu date trong db nen la khi su dung se ep ve date.
     private String type;
 
-    public CommentReplyPost(int id, Post post, Account acc, Comment comment, long date, String type) {
+    public CommentReplyPost(int id, Post post, Account acc, CommentReply comment, long date, String type) {
         this.id = id;
         this.post = post;
         this.acc = acc;
@@ -55,11 +55,11 @@ public class CommentReplyPost {
         this.acc = acc;
     }
 
-    public Comment getComment() {
+    public CommentReply getComment() {
         return comment;
     }
 
-    public void setComment(Comment comment) {
+    public void setComment(CommentReply comment) {
         this.comment = comment;
     }
 

@@ -11,13 +11,16 @@ import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
+import vn.com.meo.group.iforum.controllers.webtretho.WebTreThoController;
 import vn.com.meo.group.iforum.views.tab.base.Tab;
 import vn.com.meo.group.iforum.utils.Resources;
 import vn.com.meo.group.iforum.views.LoginPanel;
+import vn.com.meo.group.iforum.views.LoginPanel;
+import vn.com.meo.group.iforum.views.frame.Splash;
 import vn.com.meo.group.iforum.views.tab.base.AllForumTab;
-import vn.com.meo.group.iforum.views.tab.general.AccounTab;
-import vn.com.meo.group.iforum.views.tab.general.CommentCategoryTab;
-import vn.com.meo.group.iforum.views.tab.general.CommentContentTab;
+import vn.com.meo.group.iforum.views.tab.general.AccountTab;
+import vn.com.meo.group.iforum.views.tab.general.CommentReplyCategoryTab;
+import vn.com.meo.group.iforum.views.tab.general.CommentReplyTab;
 import vn.com.meo.group.iforum.views.tab.general.EnterCategoryTab;
 import vn.com.meo.group.iforum.views.tab.general.PostNewsTab;
 import vn.com.meo.group.iforum.views.tab.general.PostsLinkTab;
@@ -66,7 +69,6 @@ public class AppMain extends javax.swing.JFrame {
         mainTabbed.setFont(fontTab);
         //tab tong hop
         mainTabbed.addTab("Tổng Hợp", new AllForumTab());
-        
         //tab dang tin tong hop
         Tab dangTinTongHop = new Tab();
         dangTinTongHop.setBackground(backGroundColor);
@@ -75,15 +77,9 @@ public class AppMain extends javax.swing.JFrame {
         dangTinTongHop.addSubTab("Nhập Chuyên Mục", new EnterCategoryTab());
         dangTinTongHop.addSubTab("Thêm Chuyên Mục", new  AddCategoryTab());
         mainTabbed.addTab("Đăng Tin Tổng Hợp", dangTinTongHop);
-        //tab webtretho
-        Tab webtretho = new Tab();
-        webtretho.setBackground(backGroundColor);
-        webtretho.setFontTab(fontSubTab);
-        webtretho.addSubTab("Tài Khoản", new AccounTab());
-        webtretho.addSubTab("Link Bài Viết", new PostsLinkTab());
-        webtretho.addSubTab("Nội Dung Comment", new CommentContentTab());
-        webtretho.addSubTab("Phân Loại Bình Luận", new CommentCategoryTab());
-        mainTabbed.addTab("webtretho", webtretho);
+        //webtretho
+        new WebTreThoController(mainTabbed);
+        //other web
     }
 
     /**

@@ -11,17 +11,19 @@ import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
-import vn.com.meo.group.iforum.apps.webtretho.WebTreTho;
+import vn.com.meo.group.iforum.controllers.webtretho.WebTreThoController;
 import vn.com.meo.group.iforum.views.tab.base.Tab;
 import vn.com.meo.group.iforum.utils.Resources;
 import vn.com.meo.group.iforum.views.LoginPanel;
+import vn.com.meo.group.iforum.views.LoginPanel;
+import vn.com.meo.group.iforum.views.frame.Splash;
 import vn.com.meo.group.iforum.views.tab.base.AllForumTab;
-import vn.com.meo.group.iforum.views.tab.general.AccounTab;
-import vn.com.meo.group.iforum.views.tab.general.CommentCategoryTab;
-import vn.com.meo.group.iforum.views.tab.general.CommentContentTab;
+import vn.com.meo.group.iforum.views.tab.general.AccountTab;
+import vn.com.meo.group.iforum.views.tab.general.CommentReplyCategoryTab;
+import vn.com.meo.group.iforum.views.tab.general.CommentReplyTab;
 import vn.com.meo.group.iforum.views.tab.general.EnterCategoryTab;
 import vn.com.meo.group.iforum.views.tab.general.PostNewsTab;
-import vn.com.meo.group.iforum.views.tab.general.PostsLinkTab;
+import vn.com.meo.group.iforum.views.tab.general.AutoCommentReplyTab;
 import vn.com.meo.group.iforum.views.tab.general.AddCategoryTab;
 
 /**
@@ -66,25 +68,18 @@ public class AppMain extends javax.swing.JFrame {
         mainTabbed.setVisible(true);
         mainTabbed.setFont(fontTab);
         //tab tong hop
-        mainTabbed.addTab("Tông Hợp", new AllForumTab());
-        
+        mainTabbed.addTab("Tổng Hợp", new AllForumTab());
         //tab dang tin tong hop
         Tab dangTinTongHop = new Tab();
         dangTinTongHop.setBackground(backGroundColor);
         dangTinTongHop.setFontTab(fontSubTab);
         dangTinTongHop.addSubTab("Đăng Tin", new PostNewsTab());
         dangTinTongHop.addSubTab("Nhập Chuyên Mục", new EnterCategoryTab());
-        dangTinTongHop.addSubTab("Tạo Chuyên Mục", new  AddCategoryTab());
+        dangTinTongHop.addSubTab("Thêm Chuyên Mục", new  AddCategoryTab());
         mainTabbed.addTab("Đăng Tin Tổng Hợp", dangTinTongHop);
-        //tab webtretho
-        Tab webtretho = new Tab();
-        webtretho.setBackground(backGroundColor);
-        webtretho.setFontTab(fontSubTab);
-        webtretho.addSubTab("Tài Khoản", new AccounTab());
-        webtretho.addSubTab("Link Bài Viết", new PostsLinkTab());
-        webtretho.addSubTab("Nội Dung Comment", new CommentContentTab());
-        webtretho.addSubTab("Phân Loại Bình Luận", new CommentCategoryTab());
-        mainTabbed.addTab("webtretho", webtretho);
+        //webtretho
+        new WebTreThoController(mainTabbed);
+        //other web
     }
 
     /**
@@ -159,10 +154,7 @@ public class AppMain extends javax.swing.JFrame {
             public void run() {
                 new AppMain(splash).setVisible(true);
             }
-        });
-        
-//        WebTreTho w= new WebTreTho();
-//        w.register("https://www.webtretho.com/forum/forum/register.php", "iiblack", "buiduonga4", "buianhduong001@gmail.com");
+        }); 
     }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -14,7 +14,7 @@ public class Post {
     private String title;
     private String content;
     private Account account;
-    private CategoryWeb category;
+    private WebCategory category;
 
     public Post(int id, String title, String content, Account account) {
         this.id = id;
@@ -23,7 +23,7 @@ public class Post {
         this.account = account;
     }
 
-    public Post(int id, String title, String content, Account account, CategoryWeb category) {
+    public Post(int id, String title, String content, Account account, WebCategory category) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -34,11 +34,11 @@ public class Post {
     public Post() {
     }
 
-    public CategoryWeb getCategory() {
+    public WebCategory getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryWeb category) {
+    public void setCategory(WebCategory category) {
         this.category = category;
     }
 

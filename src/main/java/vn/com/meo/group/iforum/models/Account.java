@@ -14,7 +14,7 @@ public class Account {
     private String username;
     private String password;
     private String email;
-    private int register;
+    private boolean isRegister;
     
     public Account() {
     }
@@ -22,6 +22,11 @@ public class Account {
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+    public Account(String username, String password, boolean  isRegister) {
+        this.username = username;
+        this.password = password;
+        this.isRegister = isRegister;
     }
 
     public Account(int id, String username, String password) {
@@ -36,13 +41,21 @@ public class Account {
         this.password = password;
         this.email = email;
     }
-
-    public int getRegister() {
-        return register;
+    
+    public Account(int id, String username, String password, String email, boolean registry) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.isRegister = registry;
     }
 
-    public void setRegister(int register) {
-        this.register = register;
+    public boolean isIsRegister() {
+        return isRegister;
+    }
+
+    public void setIsRegister(boolean isRegister) {
+        this.isRegister = isRegister;
     }
 
     public int getId() {
@@ -78,14 +91,18 @@ public class Account {
     }
     
     @Override
-    public boolean equals(Object account){
-        if (account instanceof Account){
-            if(this.username.equals(((Account)account).getUsername()) || 
-                    this.email.equals(((Account)account).getEmail())){
-                return true;
-            }
+    public boolean equals(Object o){
+        if(o == null){
+            return false;
+        }
+        Account account = (Account) o;
+        if(this.username.equals(account.getUsername())){
+            return true;
         }
         return false;
     }
-    
+    @Override
+    public String toString(){
+        return username;
+    }
 }

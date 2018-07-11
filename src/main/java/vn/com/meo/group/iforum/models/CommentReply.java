@@ -47,4 +47,16 @@ public class CommentReply {
     public void setContentReply(String contentReply) {
         this.contentReply = contentReply;
     }
+    
+    @Override
+    public boolean equals(Object o){
+        if(o == null){
+            return false;
+        }
+        CommentReply tmp = (CommentReply) o;
+        if(tmp.getContentComment().equals(contentComment) && tmp.getContentReply().equals(contentReply)){
+            return true;
+        }
+        return false;
+    }
 }

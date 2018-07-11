@@ -29,11 +29,11 @@ public class AccountTab extends javax.swing.JPanel {
         initComponents();
     }
 
-    public JLabel getBtnDelete() {
+    public JButton getBtnDelete() {
         return btnDelete;
     }
 
-    public JLabel getBtnEdit() {
+    public JButton getBtnEdit() {
         return btnEdit;
     }
 
@@ -95,13 +95,13 @@ public class AccountTab extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tbUsers = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JLabel();
-        btnEdit = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         tfSearch = new javax.swing.JTextField();
         lbCurrentPage = new javax.swing.JLabel();
         btnBackPage = new javax.swing.JButton();
         btnNextPage = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         tfUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -120,19 +120,22 @@ public class AccountTab extends javax.swing.JPanel {
         tbUsers.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tbUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "admin", "admin"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "STT", "User/Email", "Password"
+                "STT", "User/Email", "Password", "Đã Đăng Kí"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -144,37 +147,13 @@ public class AccountTab extends javax.swing.JPanel {
         if (tbUsers.getColumnModel().getColumnCount() > 0) {
             tbUsers.getColumnModel().getColumn(0).setMinWidth(50);
             tbUsers.getColumnModel().getColumn(0).setMaxWidth(50);
-            tbUsers.getColumnModel().getColumn(2).setResizable(false);
+            tbUsers.getColumnModel().getColumn(3).setMinWidth(100);
+            tbUsers.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_User_Menu_Male_25px_1.png"))); // NOI18N
         jLabel9.setText("Users");
-
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Delete_User_Male_25px.png"))); // NOI18N
-        btnDelete.setText("Xóa");
-        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDeleteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDeleteMouseExited(evt);
-            }
-        });
-
-        btnEdit.setBackground(new java.awt.Color(255, 255, 255));
-        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Edit_Account_25px.png"))); // NOI18N
-        btnEdit.setText("Sửa");
-        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEditMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEditMouseExited(evt);
-            }
-        });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Find_User_Male_25px.png"))); // NOI18N
 
@@ -191,6 +170,14 @@ public class AccountTab extends javax.swing.JPanel {
 
         btnNextPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Next_page_25px.png"))); // NOI18N
 
+        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Edit_Account_25px.png"))); // NOI18N
+        btnEdit.setText("Sửa");
+
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vn/com/meo/group/iforum/resources/images/icons8_Delete_User_Male_25px.png"))); // NOI18N
+        btnDelete.setText("Xóa");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -205,7 +192,7 @@ public class AccountTab extends javax.swing.JPanel {
                         .addComponent(btnEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDelete)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,6 +205,9 @@ public class AccountTab extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete, btnEdit});
+
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
@@ -225,18 +215,18 @@ public class AccountTab extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
-                        .addComponent(btnDelete)
-                        .addComponent(btnEdit))
+                        .addComponent(btnEdit)
+                        .addComponent(btnDelete))
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tfSearch, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNextPage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbCurrentPage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBackPage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tfUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -325,29 +315,13 @@ public class AccountTab extends javax.swing.JPanel {
                     .addComponent(btnAdd)
                     .addComponent(btnRegistry))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel11});
 
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditMouseExited
-
-    private void btnEditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditMouseEntered
-
-    private void btnDeleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteMouseExited
-
-    private void btnDeleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteMouseEntered
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
@@ -360,8 +334,8 @@ public class AccountTab extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBackPage;
-    private javax.swing.JLabel btnDelete;
-    private javax.swing.JLabel btnEdit;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNextPage;
     private javax.swing.JButton btnRegistry;
     private javax.swing.JCheckBox cbUserIsRegister;

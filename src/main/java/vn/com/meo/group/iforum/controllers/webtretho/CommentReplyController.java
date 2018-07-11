@@ -72,11 +72,11 @@ public class CommentReplyController extends BaseController implements
 
     @Override
     public void initData() {
-        comboBoxModel = (DefaultComboBoxModel<CommentReplyCategory>) cbCategoryCommentReply.getModel(); 
-        for (CommentReplyCategory category : CommentReplyCategoryController.commentReplyCategorys) {
+        
+        for (CommentReplyCategory category : website.getCommentReplyCategorys()) {
             comboBoxModel.addElement(category);
         }
-        tableModel = (DefaultTableModel) tbCommentReply.getModel();
+        
     }
 
     @Override
@@ -90,7 +90,9 @@ public class CommentReplyController extends BaseController implements
         btnBackPage = commentReplyTab.getBtnBackPage();
         lbCurrentPage = commentReplyTab.getLbCurrentPageUser();
         tbCommentReply = commentReplyTab.getTbCommentReply();
+        tableModel = (DefaultTableModel) tbCommentReply.getModel();
         cbCategoryCommentReply = commentReplyTab.getCbCommentCategory();
+        comboBoxModel = (DefaultComboBoxModel<CommentReplyCategory>) cbCategoryCommentReply.getModel(); 
     }
 
     @Override
@@ -175,9 +177,21 @@ public class CommentReplyController extends BaseController implements
 
     private void actionEditCommentReply() {
         CommentReplyCategory commentReplyCategoryCurrent = (CommentReplyCategory) cbCategoryCommentReply.getSelectedItem();
-        JEditDialog.showEditCommentReplyDialog(commentReplyTab, commentReplyCategoryCurrent
-                , CommentReplyCategoryController.commentReplyCategorys, 
-                commentReplyCategoryCurrent.getCommentReplyList().get(tbCommentReply.getSelectedRow()));
+        int row = tbCommentReply.getSelectedRow();
+        CommentReply cmtCurrent = commentReplyCategoryCurrent.getCommentReplyList().get(row);
+        JEditDialog.ResultEditCommentReply result = JEditDialog.showEditCommentReplyDialog(commentReplyTab, 
+                commentReplyCategoryCurrent, website.getCommentReplyCategorys(), cmtCurrent);
+        
+        if(commentReplyCategoryCurrent.equals(result.getCommentReplyCategory())){
+            tableModel.setValueAt(cmtCurrent.getContentComment(), row, 1);
+            tableModel.setValueAt(cmtCurrent.getContentReply(), row, 2);
+            tableModel.setValueAt(commentReplyCategoryCurrent.getName(), row, 3);
+        }else{
+            result.getCommentReplyCategory().getCommentReplyList().add(result.getCommentReply());
+            commentReplyCategoryCurrent.getCommentReplyList().remove(row);
+            tableModel.removeRow(row);
+        }
+        //update to db
     }
 
 }

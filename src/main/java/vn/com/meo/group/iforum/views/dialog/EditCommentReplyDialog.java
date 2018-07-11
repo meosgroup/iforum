@@ -55,14 +55,18 @@ public class EditCommentReplyDialog extends javax.swing.JPanel {
         jLabel1.setText("Nội dung bình luận");
 
         tfComment.setColumns(20);
+        tfComment.setLineWrap(true);
         tfComment.setRows(5);
+        tfComment.setWrapStyleWord(true);
         jScrollPane1.setViewportView(tfComment);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nội dung trả lời");
 
         tfReply.setColumns(20);
+        tfReply.setLineWrap(true);
         tfReply.setRows(5);
+        tfReply.setWrapStyleWord(true);
         jScrollPane2.setViewportView(tfReply);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

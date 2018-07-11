@@ -27,7 +27,6 @@ import vn.com.meo.group.iforum.views.tab.general.CommentReplyCategoryTab;
  */
 public class CommentReplyCategoryController extends BaseController implements ActionListener{
     //DATA
-    public static Vector<CommentReplyCategory> commentReplyCategorys;
     private DefaultTableModel tableModel;
     //UI
     private CommentReplyCategoryTab commentReplyCategoryTab;
@@ -59,11 +58,8 @@ public class CommentReplyCategoryController extends BaseController implements Ac
 
     @Override
     public void initData() {
-        //
-        commentReplyCategorys = getFromDB();
-        tableModel = (DefaultTableModel) tbCommentCategory.getModel();
         int i=0;
-        for(CommentReplyCategory category: commentReplyCategorys){
+        for(CommentReplyCategory category: website.getCommentReplyCategorys()){
             Vector tmp = new Vector();
             tmp.add(i++);
             tmp.add(category.getName());
@@ -80,6 +76,7 @@ public class CommentReplyCategoryController extends BaseController implements Ac
         btnBackPage = commentReplyCategoryTab.getBtnBackPage();
         btnNextPage = commentReplyCategoryTab.getBtnNextPage();
         tbCommentCategory = commentReplyCategoryTab.getTbCommentCategory();
+        tableModel = (DefaultTableModel) tbCommentCategory.getModel();
     }
 
     @Override
@@ -97,24 +94,21 @@ public class CommentReplyCategoryController extends BaseController implements Ac
             return;
         }
     }
-    private Vector<CommentReplyCategory> getFromDB() {
-        commentReplyCategorys = new Vector<>();
-        commentReplyCategorys.add(new CommentReplyCategory(1, "Mua bán"));
-        return commentReplyCategorys;
-    }
+
     private void actionAddCommentCategory(){
         String category = tfCategoryName.getText();
         CommentReplyCategory tmp = new CommentReplyCategory(tableModel.getRowCount(), category);
-        if(commentReplyCategorys.contains(tmp)){
+        if(website.getCommentReplyCategorys().contains(tmp)){
             JOptionPane.showMessageDialog(commentReplyCategoryTab, "Đã tồn tại");
         }else{
-            commentReplyCategorys.add(tmp);
+            website.getCommentReplyCategorys().add(tmp);
             Vector row = new Vector();
             row.add(tmp.getId());
             row.add(tmp.getName());
             tableModel.addRow(row);
             tfCategoryName.setText("");
             CommentReplyController.comboBoxModel.addElement(tmp);
+            AutoCommentReplyController.modelCommentCategory.addElement(tmp);
             //add to db
             JOptionPane.showMessageDialog(commentReplyCategoryTab, "Thêm thành công");
         }
@@ -123,7 +117,7 @@ public class CommentReplyCategoryController extends BaseController implements Ac
         int index = tbCommentCategory.getSelectedRow();
         if(index >= 0){
             tableModel.removeRow(index);
-            commentReplyCategorys.remove(index);
+            website.getCommentReplyCategorys().remove(index);
             if(index == 0){
                 CommentReplyController.comboBoxModel.removeAllElements();
             }else{
@@ -138,12 +132,19 @@ public class CommentReplyCategoryController extends BaseController implements Ac
     private void actionEditCategory() {
         int index = tbCommentCategory.getSelectedRow();
         if(index >= 0){
-            CommentReplyCategory tmp = JEditDialog.showEditCommentReplyCategoryDialog(commentReplyCategoryTab);
+            CommentReplyCategory tmp = JEditDialog.showEditCommentReplyCategoryDialog(
+                    commentReplyCategoryTab, website.getCommentReplyCategorys().get(index));
             if(tmp != null){
-                //change db
-                //change table
-                tableModel.setValueAt(tmp.getName(), index, 1);
-                commentReplyCategorys.get(index).setName(tmp.getName());
+                int indexOf = website.getCommentReplyCategorys().indexOf(tmp);
+                if( indexOf >=0 && indexOf != index ){
+                    JOptionPane.showMessageDialog(commentReplyCategoryTab, "Loại comment đã tồn tại");
+                }else{
+                    //change db
+                    //change table
+                    tableModel.setValueAt(tmp.getName(), index, 1);
+                    website.getCommentReplyCategorys().get(index).setName(tmp.getName());
+                }
+                
             }
         }
     }

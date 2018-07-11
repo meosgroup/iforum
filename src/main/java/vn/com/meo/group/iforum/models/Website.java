@@ -6,7 +6,7 @@
 package vn.com.meo.group.iforum.models;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Vector;
 
 /**
  *
@@ -15,46 +15,45 @@ import java.util.List;
 public class Website {
     private int id;
     private String name;
-    private ArrayList<CategoryWeb> categoryWebs;
-    private ArrayList<Account> accounts;
-    private ArrayList<CommentReplyCategory> categoryCommentReplys;
+    private Vector<WebCategory> webCategorys;
+    private Vector<Account> accounts;
+    private Vector<CommentReplyCategory> commentReplyCategorys;
     public Website(int id, String nameWeb) {
         this.id = id;
         this.name = nameWeb;
-        categoryWebs = new ArrayList<>();
+        webCategorys = new Vector<>();
+        accounts = new Vector<>();
     }
 
-    public Website(int id, String nameWeb, ArrayList<CategoryWeb> categoryWebs) {
+    public Website(int id, String nameWeb, Vector<WebCategory> categoryWebs) {
         this.id = id;
         this.name = nameWeb;
-        this.categoryWebs = categoryWebs;
+        this.webCategorys = categoryWebs;
+        accounts = new Vector<>();
     }
 
-    public Website(int id, String nameWeb, ArrayList<CategoryWeb> categoryWebs, ArrayList<Account> accounts) {
+    public Website(int id, String nameWeb, Vector<WebCategory> categoryWebs, Vector<Account> accounts) {
         this.id = id;
         this.name = nameWeb;
-        this.categoryWebs = categoryWebs;
+        this.webCategorys = categoryWebs;
         this.accounts = accounts;
     }
 
-    public Website(int id, String nameWeb, ArrayList<CategoryWeb> categoryWebs, ArrayList<Account> accounts, ArrayList<CommentReplyCategory> categoryCommentReplys) {
+    public Website(int id, String nameWeb, Vector<WebCategory> categoryWebs, 
+            Vector<Account> accounts, Vector<CommentReplyCategory> commentReplyCategorys) {
         this.id = id;
         this.name = nameWeb;
-        this.categoryWebs = categoryWebs;
+        this.webCategorys = categoryWebs;
         this.accounts = accounts;
-        this.categoryCommentReplys = categoryCommentReplys;
+        this.commentReplyCategorys = commentReplyCategorys;
     }
 
     public Website() {
     }
     
 
-    public ArrayList<CategoryWeb> getCategoryWebs() {
-        return categoryWebs;
-    }
-
-    public void setCategoryWebs(ArrayList<CategoryWeb> categoryWebs) {
-        this.categoryWebs = categoryWebs;
+    public Vector<WebCategory> getWebCategorys() {
+        return webCategorys;
     }
 
     public int getId() {
@@ -73,19 +72,24 @@ public class Website {
         this.name = nameWeb;
     }
 
-    public ArrayList<Account> getAccounts() {
+    public Vector<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(ArrayList<Account> accounts) {
+    public void setAccounts(Vector<Account> accounts) {
         this.accounts = accounts;
     }
 
-    public ArrayList<CommentReplyCategory> getCategoryCommentReplys() {
-        return categoryCommentReplys;
+    public Vector<CommentReplyCategory> getCommentReplyCategorys() {
+        return commentReplyCategorys;
     }
 
-    public void setCategoryCommentReplys(ArrayList<CommentReplyCategory> categoryCommentReplys) {
-        this.categoryCommentReplys = categoryCommentReplys;
+    public void setCommentReplyCategorys(Vector<CommentReplyCategory> commentReplyCategorys) {
+        this.commentReplyCategorys = commentReplyCategorys;
     }
+
+    public void setWebCategorys(Vector<WebCategory> webCategorys) {
+        this.webCategorys = webCategorys;
+    }
+
 }

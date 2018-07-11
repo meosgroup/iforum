@@ -8,10 +8,13 @@ package vn.com.meo.group.iforum.views.dialog;
 import java.awt.Component;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import vn.com.meo.group.iforum.models.Account;
 import vn.com.meo.group.iforum.models.CommentReply;
 import vn.com.meo.group.iforum.models.CommentReplyCategory;
 
@@ -21,21 +24,45 @@ import vn.com.meo.group.iforum.models.CommentReplyCategory;
  */
 public class JEditDialog {
 
-    
-    public static CommentReplyCategory showEditCommentReplyCategoryDialog(Component parent) {
-        EditCommentReplyCategoryDialog edit = new EditCommentReplyCategoryDialog();
+    public static Account showEditAccountDialog(Component parent, Account account){
+        EditAccountDialog edit = new EditAccountDialog();
+        JTextField tfUsername = edit.getTfUsername();
+        tfUsername.setText(account.getUsername());
+        
+        JTextField tfEmail = edit.getTfEmail();
+        tfEmail.setText(account.getEmail());
+        
+        JTextField tfPassword = edit.getTfPassword();
+        tfPassword.setText(account.getPassword());
+        
+        JCheckBox cbIsRegister = edit.getCbIsRegister();
+        cbIsRegister.setSelected(account.isIsRegister());
+        
         final JComponent[] inputs = new JComponent[]{edit};
-        CommentReplyCategory tmp = null;
+        int result = JOptionPane.showConfirmDialog(parent, inputs, "Sửa loại tài khoản", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            Account tmp = new Account(0, tfUsername.getText(), tfPassword.getText(),
+                    tfEmail.getText(), cbIsRegister.isSelected());
+            return tmp;
+        }
+        return null;
+    }
+    public static CommentReplyCategory showEditCommentReplyCategoryDialog(Component parent, 
+            CommentReplyCategory commentReplyCategory) {
+        EditCommentReplyCategoryDialog edit = new EditCommentReplyCategoryDialog();
+        edit.getTfCommentCategory().setText(commentReplyCategory.getName());
+        final JComponent[] inputs = new JComponent[]{edit};
         int result = JOptionPane.showConfirmDialog(parent, inputs, "Sửa loại bình luận", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            tmp = new CommentReplyCategory(0, edit.getTfCommentCategory().getText());
+            return new CommentReplyCategory(0, edit.getTfCommentCategory().getText());
         }
-        return tmp;
+        return null;
     }
     
-    public static CommentReply showEditCommentReplyDialog(Component parent, 
+    public static ResultEditCommentReply showEditCommentReplyDialog(Component parent, 
             CommentReplyCategory cmtRCurrent, Vector<CommentReplyCategory> commentReplyCategorys,
             CommentReply cmt){
+        
         EditCommentReplyDialog edit = new EditCommentReplyDialog();
         final JComponent[] inputs = new JComponent[]{edit};
         JTextArea tfComment = edit.getTfComment();
@@ -47,14 +74,29 @@ public class JEditDialog {
         for(CommentReplyCategory category: commentReplyCategorys){
             comboBoxModel.addElement(category);
         }
+        cbCommentReplyCategory.setSelectedItem(cmtRCurrent);
         int result = JOptionPane.showConfirmDialog(parent, inputs, "Sửa bình luận", JOptionPane.OK_CANCEL_OPTION);
-        
         CommentReplyCategory cmtReplyC = (CommentReplyCategory) cbCommentReplyCategory.getSelectedItem();
-        if(cmtReplyC.equals(cmtRCurrent)){
-            
-        }else{
-            
+        cmt.setContentComment(tfComment.getText());
+        cmt.setContentReply(tfReply.getText());
+        return new ResultEditCommentReply(cmt, (CommentReplyCategory) cbCommentReplyCategory.getSelectedItem());
+    }
+    
+    public static class ResultEditCommentReply{
+        private CommentReply commentReply;
+        private CommentReplyCategory commentReplyCategory;
+
+        public ResultEditCommentReply(CommentReply commentReply, CommentReplyCategory commentReplyCategory) {
+            this.commentReply = commentReply;
+            this.commentReplyCategory = commentReplyCategory;
         }
-        return null;
+
+        public CommentReply getCommentReply() {
+            return commentReply;
+        }
+
+        public CommentReplyCategory getCommentReplyCategory() {
+            return commentReplyCategory;
+        }
     }
 }

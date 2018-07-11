@@ -11,21 +11,21 @@ import java.util.ArrayList;
  *
  * @author nguye
  */
-public class CategoryWeb {
+public class WebCategory {
     private int id;
     private String name;
     private String url;
-    private ArrayList<CategoryWeb> categoryChilds;
+    private ArrayList<WebCategory> categoryChilds;
     
 
-    public CategoryWeb(int id, String name, String url, ArrayList<CategoryWeb> categoryChilds) {
+    public WebCategory(int id, String name, String url, ArrayList<WebCategory> categoryChilds) {
         this.id = id;
         this.name = name;
         this.url = url;
         this.categoryChilds = categoryChilds;
     }
 
-    public CategoryWeb(String name, String url) {
+    public WebCategory(String name, String url) {
         this.name = name;
         this.url = url;
     }
@@ -54,12 +54,26 @@ public class CategoryWeb {
         this.name = name;
     }
 
-    public ArrayList<CategoryWeb> getCategoryChilds() {
+    public ArrayList<WebCategory> getCategoryChilds() {
         return categoryChilds;
     }
 
-    public void setCategoryChilds(ArrayList<CategoryWeb> categoryChilds) {
+    public void setCategoryChilds(ArrayList<WebCategory> categoryChilds) {
         this.categoryChilds = categoryChilds;
     }
     
+    public boolean equals(Object o){
+        if(o== null){
+            return false;
+        }
+        WebCategory tmp = (WebCategory) o;
+        if(this.url.equals(tmp.getUrl()) || this.name.equals(tmp.getName())){
+            return true;
+        }
+        return false;
+    }
+    @Override
+    public String toString(){
+        return name;
+    }
 }

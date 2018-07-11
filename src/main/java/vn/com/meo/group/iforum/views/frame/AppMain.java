@@ -23,7 +23,7 @@ import vn.com.meo.group.iforum.views.tab.general.CommentReplyCategoryTab;
 import vn.com.meo.group.iforum.views.tab.general.CommentReplyTab;
 import vn.com.meo.group.iforum.views.tab.general.EnterCategoryTab;
 import vn.com.meo.group.iforum.views.tab.general.PostNewsTab;
-import vn.com.meo.group.iforum.views.tab.general.PostsLinkTab;
+import vn.com.meo.group.iforum.views.tab.general.AutoCommentReplyTab;
 import vn.com.meo.group.iforum.views.tab.general.AddCategoryTab;
 
 /**

@@ -12,11 +12,14 @@ package vn.com.meo.group.iforum.apps.base;
  */
 public abstract class ToolBase {
     public abstract void login(String username, String password);
-    public abstract boolean isLogin();
+    public abstract String isLogin();
     public abstract void logout();
     public abstract void register(String username, String password, String email);
     public abstract boolean isRegister(String username);
-    public abstract void post(String linkUrl, String title, String content);
-    public abstract void comment(String linkUrl, String comment);
-    public abstract void replyComment(String linkUrl, String comment);
+    public abstract String post(String linkUrl, String title, String content);
+    public abstract String comment(String linkUrl, String comment);
+    public abstract String replyComment(String linkUrl, String comment);
+    public void log(String s){
+        System.out.println("Log: " + s);
+    }
 }

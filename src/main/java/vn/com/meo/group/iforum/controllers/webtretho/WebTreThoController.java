@@ -106,7 +106,6 @@ public class WebTreThoController implements Controller {
         //Comment Content Tab
         CommentReplyTab commentReplyTab = new CommentReplyTab();
         commentReplyController = new CommentReplyController(toolBase, website, commentReplyTab, commentDao);
-
         webtretho.addSubTab("Tài Khoản", accountTab);
         webtretho.addSubTab("Auto Bình Luận", autoCommentReplyTab);
         webtretho.addSubTab("Nội Dung Bình Luận", commentReplyTab);

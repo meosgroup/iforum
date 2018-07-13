@@ -19,6 +19,17 @@ public abstract class ToolBase {
     public abstract String post(String linkUrl, String title, String content);
     public abstract String comment(String linkUrl, String comment);
     public abstract String replyComment(String linkUrl, String comment);
+    public boolean isNumber(String id){
+        if(id == null){
+            return false;
+        }
+        try{
+            int i = Integer.parseInt(id);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
     public void log(String s){
         System.out.println("Log: " + s);
     }

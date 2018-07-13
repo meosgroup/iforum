@@ -135,7 +135,9 @@ public class WebTreThoRequest extends ToolBase {
                     .field("poststarttime", poststarttime)
                     .field("loggedinuser", loggedinuser).asString();
             Headers headers = res.getHeaders();
-            return getIdThreadPost(headers.toString());
+            String urlPost = headers.getFirst("Location");
+            //https://www.webtretho.com/forum/showthread.php?t=2688721&p=36642980#post36642980
+            return getIdThreadPost(urlPost);
         } catch (UnirestException ex) {
             Logger.getLogger(WebTreThoRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -230,9 +232,12 @@ public class WebTreThoRequest extends ToolBase {
                     .field("multiquoteempty", multiquoteempty)
                     .field("sbutton", sbutton).asString();
             String location = res.getHeaders().getFirst("Location");
-            idComment = location.substring(location.indexOf("#post") +5);
-            System.out.println(idComment);
-            return idComment;
+            System.out.println("Location reply: " + location);
+            int index = location.indexOf("#post");
+            if(index >= 0){
+                idComment = location.substring(index +5);
+                return idComment;
+            }
         } catch (Exception ex) {
             Logger.getLogger(WebTreThoRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -254,16 +259,11 @@ public class WebTreThoRequest extends ToolBase {
             Logger.getLogger(WebTreThoRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private String getIdThreadPost(String cookie){
-        int start = cookie.indexOf("bb_wtt_login_redirect_url=") + "bb_wtt_login_redirect_url=".length();
-        int finish = cookie.indexOf(";", start);
-        String url = cookie.substring(start, finish);
-        try {
-            url = URLDecoder.decode(url, "ASCII");
-            return url.substring(url.indexOf("t=") + 2);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(WebTreThoRequest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+    private String getIdThreadPost(String url){
+        //https://www.webtretho.com/forum/showthread.php?t=2688721&p=36642980#post36642980
+        int start = url.indexOf("t=") + 2;
+        int finish = url.indexOf("&p=", start);
+        String t = url.substring(start, finish);
+        return t;
     }
 }

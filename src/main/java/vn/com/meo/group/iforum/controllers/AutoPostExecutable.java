@@ -70,6 +70,13 @@ public abstract class AutoPostExecutable extends Thread {
                 }
             }).start();
         }
+        while(autoPost.getIdThread() == null || "".equals(autoPost.getIdThread())){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(AutoPostExecutable.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         for (int i = 0, j = 0; i < commentCount; i++, j++) {
             if (autoPost.getUserPost().equals(users.get(i))) {
                 j++;

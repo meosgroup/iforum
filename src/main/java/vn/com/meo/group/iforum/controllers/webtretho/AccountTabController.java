@@ -199,6 +199,7 @@ public class AccountTabController extends BaseController implements ActionListen
             try {
                 //delete from db
                 accountDao.deleteAccount(website.getAccounts().get(index));
+                AutoCommentReplyController.modelUser.removeElementAt(index);
                 website.getAccounts().remove(index);
                 tableModel.removeRow(index);
                 JOptionPane.showMessageDialog(accountTab, "Xóa thành công");

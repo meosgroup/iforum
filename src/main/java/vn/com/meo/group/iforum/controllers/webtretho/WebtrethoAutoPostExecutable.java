@@ -47,8 +47,8 @@ public class WebtrethoAutoPostExecutable extends AutoPostExecutable {
                 autoPost.setIdThread(idThread);
                 String urlPost = "https://www.webtretho.com/forum/f1/thread-id-" + idThread;
                 autoPost.setUrl(urlPost);
-                tool.log("idthread: " + idThread);
-                tool.log("urlpost: " + urlPost);
+                tool.log("Id thread: " + idThread);
+                tool.log("Url post: " + urlPost);
             }
         } else {
             tool.log("User post " + userPost.getUsername() + " login fail");
@@ -72,6 +72,7 @@ public class WebtrethoAutoPostExecutable extends AutoPostExecutable {
             String urlReply = tool.comment(idThread, cmt.getContentComment());
 
             if (urlReply != null) {
+                tool.log("User comment: " + userComment.getUsername()+ " Id comment: " + urlReply);
                 autoPost.setLastComment(cmt);
                 autoPost.setLastUserComment(userComment);
                 autoPost.setLastTimeComment(System.currentTimeMillis());
@@ -80,7 +81,8 @@ public class WebtrethoAutoPostExecutable extends AutoPostExecutable {
                     tool.login(userPost.getUsername(), userPost.getPassword());
                 }
                 if (userPost.getUsername().equals(tool.isLogin())) {
-                    tool.replyComment(urlReply, cmt.getContentReply());
+                    String idReply = tool.replyComment(urlReply, cmt.getContentReply());
+                    tool.log("User reply: " + userPost.getUsername() + " Id reply: " + idReply);
                 } else {
                     tool.log("user " + userPost.getUsername() + " reply fail");
                 }

@@ -7,16 +7,20 @@ package vn.com.meo.group.iforum.controllers.webtretho;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import vn.com.meo.group.iforum.apps.base.ToolBase;
+import vn.com.meo.group.iforum.apps.dao.CommentCategoryDao;
 import vn.com.meo.group.iforum.controllers.BaseController;
-import vn.com.meo.group.iforum.models.CommentReplyCategory;
+import vn.com.meo.group.iforum.models.CommentCategory;
 import vn.com.meo.group.iforum.models.Website;
 import vn.com.meo.group.iforum.views.dialog.JEditDialog;
 import vn.com.meo.group.iforum.views.tab.general.CommentReplyCategoryTab;
@@ -25,7 +29,10 @@ import vn.com.meo.group.iforum.views.tab.general.CommentReplyCategoryTab;
  *
  * @author buian
  */
-public class CommentReplyCategoryController extends BaseController implements ActionListener{
+public class CommentReplyCategoryController extends BaseController implements ActionListener {
+
+    //DAO
+    private CommentCategoryDao commentCategoryDao;
     //DATA
     private DefaultTableModel tableModel;
     //UI
@@ -37,15 +44,16 @@ public class CommentReplyCategoryController extends BaseController implements Ac
     private JButton btnNextPage;
     private JButton btnBackPage;
     private JTable tbCommentCategory;
-    public CommentReplyCategoryController(ToolBase tb, Website website, 
-            CommentReplyCategoryTab commentReplyCategoryTab) {
+
+    public CommentReplyCategoryController(ToolBase tb, Website website,
+            CommentReplyCategoryTab commentReplyCategoryTab, CommentCategoryDao commentCategoryDao) {
         super(tb, website);
         this.commentReplyCategoryTab = commentReplyCategoryTab;
+        this.commentCategoryDao = commentCategoryDao;
         initComponent();
         initActionEvent();
         initData();
     }
-    
 
     @Override
     public void initActionEvent() {
@@ -58,8 +66,8 @@ public class CommentReplyCategoryController extends BaseController implements Ac
 
     @Override
     public void initData() {
-        int i=0;
-        for(CommentReplyCategory category: website.getCommentReplyCategorys()){
+        int i = 0;
+        for (CommentCategory category : website.getCommentReplyCategorys()) {
             Vector tmp = new Vector();
             tmp.add(i++);
             tmp.add(category.getName());
@@ -70,7 +78,7 @@ public class CommentReplyCategoryController extends BaseController implements Ac
     @Override
     public void initComponent() {
         tfCategoryName = commentReplyCategoryTab.getTfName();
-        btnAdd  = commentReplyCategoryTab.getBtnAdd();
+        btnAdd = commentReplyCategoryTab.getBtnAdd();
         btnEdit = commentReplyCategoryTab.getBtnEdit();
         btnDelete = commentReplyCategoryTab.getBtnDelete();
         btnBackPage = commentReplyCategoryTab.getBtnBackPage();
@@ -81,70 +89,85 @@ public class CommentReplyCategoryController extends BaseController implements Ac
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == btnAdd){
+        if (e.getSource() == btnAdd) {
             actionAddCommentCategory();
             return;
         }
-        if(e.getSource() == btnDelete){
+        if (e.getSource() == btnDelete) {
             actionDeleteCategory();
             return;
         }
-        if(e.getSource() == btnEdit){
+        if (e.getSource() == btnEdit) {
             actionEditCategory();
             return;
         }
     }
 
-    private void actionAddCommentCategory(){
+    private void actionAddCommentCategory() {
         String category = tfCategoryName.getText();
-        CommentReplyCategory tmp = new CommentReplyCategory(tableModel.getRowCount(), category);
-        if(website.getCommentReplyCategorys().contains(tmp)){
+        CommentCategory tmp = new CommentCategory(0, category);
+        if (website.getCommentReplyCategorys().contains(tmp)) {
             JOptionPane.showMessageDialog(commentReplyCategoryTab, "Đã tồn tại");
-        }else{
-            website.getCommentReplyCategorys().add(tmp);
-            Vector row = new Vector();
-            row.add(tmp.getId());
-            row.add(tmp.getName());
-            tableModel.addRow(row);
-            tfCategoryName.setText("");
-            CommentReplyController.comboBoxModel.addElement(tmp);
-            AutoCommentReplyController.modelCommentCategory.addElement(tmp);
-            //add to db
-            JOptionPane.showMessageDialog(commentReplyCategoryTab, "Thêm thành công");
+        } else {
+            try {
+                tmp = commentCategoryDao.addCommentCategory(tmp, website.getId());
+                website.getCommentReplyCategorys().add(tmp);
+                Vector row = new Vector();
+                row.add(tableModel.getRowCount());
+                row.add(tmp.getName());
+                tableModel.addRow(row);
+                tfCategoryName.setText("");
+                CommentReplyController.comboBoxModel.addElement(tmp);
+                AutoCommentReplyController.modelCommentCategory.addElement(tmp);
+                JOptionPane.showMessageDialog(commentReplyCategoryTab, "Thêm thành công");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(commentReplyCategoryTab, "Add to database error");
+            }
+
         }
     }
+
     private void actionDeleteCategory() {
         int index = tbCommentCategory.getSelectedRow();
-        if(index >= 0){
+        if (index >= 0) {
+            
             tableModel.removeRow(index);
-            website.getCommentReplyCategorys().remove(index);
-            if(index == 0){
-                CommentReplyController.comboBoxModel.removeAllElements();
-            }else{
+            try {
+                commentCategoryDao.deleteCommentCategory(website.getCommentReplyCategorys().get(index));
+                website.getCommentReplyCategorys().remove(index);
                 CommentReplyController.comboBoxModel.removeElementAt(index);
+                AutoCommentReplyController.modelCommentCategory.removeElementAt(index);
+                JOptionPane.showMessageDialog(commentReplyCategoryTab, "Xóa thành công");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(commentReplyCategoryTab, "Delete database error");
             }
             
-            //delete from db
-            JOptionPane.showMessageDialog(commentReplyCategoryTab, "Xóa thành công");
         }
     }
 
     private void actionEditCategory() {
         int index = tbCommentCategory.getSelectedRow();
-        if(index >= 0){
-            CommentReplyCategory tmp = JEditDialog.showEditCommentReplyCategoryDialog(
-                    commentReplyCategoryTab, website.getCommentReplyCategorys().get(index));
-            if(tmp != null){
+        if (index >= 0) {
+            CommentCategory cmtCurrent = website.getCommentReplyCategorys().get(index);
+            CommentCategory tmp = JEditDialog.showEditCommentReplyCategoryDialog(
+                    commentReplyCategoryTab, cmtCurrent);
+            if (tmp != null) {
                 int indexOf = website.getCommentReplyCategorys().indexOf(tmp);
-                if( indexOf >=0 && indexOf != index ){
+                if (indexOf >= 0 && indexOf != index) {
                     JOptionPane.showMessageDialog(commentReplyCategoryTab, "Loại comment đã tồn tại");
-                }else{
-                    //change db
-                    //change table
-                    tableModel.setValueAt(tmp.getName(), index, 1);
-                    website.getCommentReplyCategorys().get(index).setName(tmp.getName());
+                } else {
+                    cmtCurrent.setName(tmp.getName());
+                    try {
+                        //change db
+                        commentCategoryDao.editCommentCategory(cmtCurrent);
+                        tableModel.setValueAt(cmtCurrent.getName(), index, 1);
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(commentReplyCategoryTab, "Edit database error");
+                        Logger.getLogger(CommentReplyCategoryController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                        
                 }
-                
+
             }
         }
     }

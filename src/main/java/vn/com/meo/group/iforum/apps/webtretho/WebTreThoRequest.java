@@ -181,7 +181,9 @@ public class WebTreThoRequest extends ToolBase {
                     .field("posthash", posthash)
                     .field("poststarttime", poststarttime).asString();
             String location = res.getHeaders().getFirst("Location");
-            System.out.println(location);
+            if(location == null){
+                return null;
+            }
             String idComment = location.substring(location.indexOf("#post") +5);
             return idComment;
             

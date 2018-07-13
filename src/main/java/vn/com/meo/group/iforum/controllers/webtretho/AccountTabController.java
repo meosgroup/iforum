@@ -7,8 +7,11 @@ package vn.com.meo.group.iforum.controllers.webtretho;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -16,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import vn.com.meo.group.iforum.apps.dao.AccountDao;
 import vn.com.meo.group.iforum.apps.webtretho.WebTreThoRequest;
 import vn.com.meo.group.iforum.controllers.BaseController;
 import vn.com.meo.group.iforum.models.Account;
@@ -29,6 +33,8 @@ import vn.com.meo.group.iforum.views.tab.general.AccountTab;
  */
 public class AccountTabController extends BaseController implements ActionListener {
 
+    //DAO
+    private AccountDao accountDao;
     private DefaultTableModel tableModel;
     //ui
     private AccountTab accountTab;
@@ -45,9 +51,11 @@ public class AccountTabController extends BaseController implements ActionListen
     private JButton btnBackPage;
     private JLabel lbCurrentPage;
 
-    public AccountTabController(WebTreThoRequest toolRequest, Website website, AccountTab accountTab) {
+    public AccountTabController(WebTreThoRequest toolRequest, Website website,
+            AccountTab accountTab, AccountDao accountDao) {
         super(toolRequest, website);
         this.accountTab = accountTab;
+        this.accountDao = accountDao;
         initComponent();
         initData();
         initActionEvent();
@@ -91,27 +99,41 @@ public class AccountTabController extends BaseController implements ActionListen
                     toolRequest.logout();
                     toolRequest.login(username, password);
                     if (username.equals(this.toolRequest.isLogin())) {
+                        try {
+                            tmp = accountDao.addAccount(tmp, website.getId());
+                            v = new Vector();
+                            v.add(tableModel.getRowCount());
+                            v.add(tmp.getUsername());
+                            v.add(tmp.getPassword());
+                            v.add(tmp.isIsRegister());
+                            website.getAccounts().add(tmp);
+                            AutoCommentReplyController.modelUser.addElement(tmp);
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(accountTab, "add database error");
+                            Logger.getLogger(AccountTabController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(accountTab, "Tài khoản hoặc mật khẩu không đúng");
+                    }
+                } else {
+                    if (email.equals("")) {
+                        JOptionPane.showMessageDialog(accountTab, "Email không được bỏ trống");
+                        return;
+                    }
+                    try {
+                        tmp = accountDao.addAccount(tmp, website.getId());
                         v = new Vector();
                         v.add(tableModel.getRowCount());
                         v.add(tmp.getUsername());
                         v.add(tmp.getPassword());
                         v.add(tmp.isIsRegister());
                         website.getAccounts().add(tmp);
-                        AutoCommentReplyController.modelUser.addElement(tmp);
-                    } else {
-                        JOptionPane.showMessageDialog(accountTab, "Tài khoản hoặc mật khẩu không đúng");
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(accountTab, "add database error");
+                        Logger.getLogger(AccountTabController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } else {
-                    if(email.equals("")){
-                        JOptionPane.showMessageDialog(accountTab, "Email không được bỏ trống");
-                        return;
-                    }
-                    v = new Vector();
-                    v.add(tableModel.getRowCount());
-                    v.add(tmp.getUsername());
-                    v.add(tmp.getPassword());
-                    v.add(tmp.isIsRegister());
-                    website.getAccounts().add(tmp);
+
                 }
                 if (v != null) {
                     tfUsername.setText("");
@@ -174,10 +196,17 @@ public class AccountTabController extends BaseController implements ActionListen
         int index = tbUsers.getSelectedRow();
 
         if (index >= 0) {
-            //delete from db
-            website.getAccounts().remove(index);
-            tableModel.removeRow(index);
-            JOptionPane.showMessageDialog(accountTab, "Xóa thành công");
+            try {
+                //delete from db
+                accountDao.deleteAccount(website.getAccounts().get(index));
+                website.getAccounts().remove(index);
+                tableModel.removeRow(index);
+                JOptionPane.showMessageDialog(accountTab, "Xóa thành công");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(accountTab, "delete database error");
+                Logger.getLogger(AccountTabController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
     }
 
@@ -192,20 +221,27 @@ public class AccountTabController extends BaseController implements ActionListen
                     accountCurrent.setEmail(tmp.getEmail());
                     accountCurrent.setUsername(tmp.getUsername());
                     accountCurrent.setPassword(tmp.getPassword());
-                    if(accountCurrent.isIsRegister() != tmp.isIsRegister()){
-                        if(tmp.isIsRegister()){//add to account auto
+                    if (accountCurrent.isIsRegister() != tmp.isIsRegister()) {
+                        if (tmp.isIsRegister()) {//add to account auto
                             accountCurrent.setIsRegister(tmp.isIsRegister());
                             AutoCommentReplyController.modelUser.addElement(accountCurrent);
-                        }else{//remove account auto
+                        } else {//remove account auto
                             accountCurrent.setIsRegister(tmp.isIsRegister());
                             AutoCommentReplyController.modelUser.removeElement(accountCurrent);
                         }
                     }
                     accountCurrent.setIsRegister(tmp.isIsRegister());
-                    tableModel.setValueAt(tmp.getUsername(), index, 1);
-                    tableModel.setValueAt(tmp.getPassword(), index, 2);
-                    tableModel.setValueAt(tmp.isIsRegister(), index, 3);
-                    JOptionPane.showMessageDialog(accountTab, "Sửa thành công");
+                    try {
+                        accountDao.editAccount(accountCurrent);
+                        tableModel.setValueAt(tmp.getUsername(), index, 1);
+                        tableModel.setValueAt(tmp.getPassword(), index, 2);
+                        tableModel.setValueAt(tmp.isIsRegister(), index, 3);
+                        JOptionPane.showMessageDialog(accountTab, "Sửa thành công");
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(accountTab, "edit database error");
+                        Logger.getLogger(AccountTabController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(accountTab, "Tài khoản sửa đã tồn tại, không thể sửa");
                 }

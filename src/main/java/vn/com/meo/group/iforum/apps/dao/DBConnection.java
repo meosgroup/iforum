@@ -19,8 +19,6 @@ import java.util.logging.Logger;
  * @author nguye
  */
 public class DBConnection {
-//    private static final DBConnection con = new DBConnection();
-
     private static Connection con;
     
     private String DBNAME = "iforum.db",
@@ -29,19 +27,15 @@ public class DBConnection {
             AUTOINCREMENT = "AUTOINCREMENT",
             STRING = "string",
             INTEGER = "integer",
-            DATE = "date",
-            TABLE_ACCOUNT = "account",
-                USERNAME = "username",
-                PASSWORD = "password",
-                ID_WEB = "id_web",
-                REGISTER = "register",
+            DATE = "date"
+            ,
             TABLE_WEBSITE = "website",
                 NAME_WEB = "name_web",
             TABLE_CATEGORY_WEB = "category_web",
                 CATEGORY_NAME = "category_name",
                 URL_CATEGORY_WEB = "url",
                 ID_PARENT = "id_parent",
-                ID_WEB_CATEGORY_WEB = "id_web",
+                //ID_WEB
             TABLE_POST = "post",
                 TITLE = "title",
                 CONTENT = "content",
@@ -53,12 +47,12 @@ public class DBConnection {
                 ID_CATEGORY_COMMENT = "id_category",
             TABLE_CATEGORY_COMMENT = "category_comment",
                 NAME_CATEGORY_COMMENT = "name",
+                //ID_WEB
             TABLE_COMMENT_REPLY_POST = "comment_reply_post",
                 ID_POST = "id_post",
 //                ID_ACCOUNT = "id_account",
                 ID_COMMENT = "id_comment",
-                DATE_COMMENT = "date",
-                TYPE = "type";
+                DATE_COMMENT = "date";
 
     public DBConnection() {
         try {
@@ -94,68 +88,53 @@ public class DBConnection {
     private void createTable() {
         try {
             Statement statement = con.createStatement();
-            String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_ACCOUNT + " ( "
-                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
-                    + USERNAME + " " + STRING + " , "
-                    + PASSWORD + " " + STRING + " , "
-                    + ID_WEB + " " + INTEGER + " , "
-                    + REGISTER + " " + INTEGER + " );";
-            statement.executeUpdate(sql);
-            sql = "CREATE TABLE IF NOT EXISTS " + TABLE_WEBSITE + " ( "
-                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
-                    + NAME_WEB + " " + STRING + " );";
-            statement.executeUpdate(sql);
-            sql = "CREATE TABLE IF NOT EXISTS " + TABLE_CATEGORY_WEB + " ( "
-                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
-                    + CATEGORY_NAME + " " + STRING + " , "
-                    + URL_CATEGORY_WEB + " " + STRING + " , "
-                    + ID_PARENT + " " + INTEGER + " , "
-                    + ID_WEB_CATEGORY_WEB + " " + INTEGER + " );";
-            statement.executeUpdate(sql);
-            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_POST + " ( "
-                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
-                    + TITLE + " " + STRING + " , "
-                    + CONTENT + " " + STRING + " , "
-                    + ID_ACCOUNT + " " + INTEGER + " , "
-                    + ID_CATEGORY_WEB + " " + INTEGER + " );";
-            statement.executeUpdate(sql);
-            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_COMMENT + " ( "
-                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
-                    + CONTENT_COMMENT + " " + STRING + " , "
-                    + CONTENT_REPLY + " " + STRING + " , "
-                    + ID_CATEGORY_COMMENT + " " + INTEGER + " );";
-            statement.executeUpdate(sql);
-            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_CATEGORY_COMMENT + " ( "
-                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
-                    + NAME_CATEGORY_COMMENT + " " + STRING + " );";
-            statement.executeUpdate(sql);
-            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_COMMENT_REPLY_POST + " ( "
-                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
-                    + ID_POST + " " + INTEGER + " , "
-                    + ID_ACCOUNT + " " + INTEGER + " , "
-                    + ID_COMMENT + " " + INTEGER + " , "
-                    + DATE_COMMENT + " " + INTEGER + " , "
-                    + TYPE + " " + STRING + " );";
+            String sql="";
+//            String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_ACCOUNT + " ( "
+//                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
+//                    + USERNAME + " " + STRING + " , "
+//                    + PASSWORD + " " + STRING + " , "
+//                    + ID_WEB + " " + INTEGER + " , "
+//                    + REGISTER + " " + INTEGER + " );";
+//            statement.executeUpdate(sql);
+            
+//            sql = "CREATE TABLE IF NOT EXISTS " + TABLE_WEBSITE + " ( "
+//                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
+//                    + NAME_WEB + " " + STRING + " );";
+//            statement.executeUpdate(sql);
+//            sql = "CREATE TABLE IF NOT EXISTS " + TABLE_CATEGORY_WEB + " ( "
+//                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
+//                    + CATEGORY_NAME + " " + STRING + " , "
+//                    + URL_CATEGORY_WEB + " " + STRING + " , "
+//                    + ID_PARENT + " " + INTEGER + " , "
+//                    + ID_WEB + " " + INTEGER + " );";
+//            statement.executeUpdate(sql);
+//            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_POST + " ( "
+//                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
+//                    + TITLE + " " + STRING + " , "
+//                    + CONTENT + " " + STRING + " , "
+//                    + ID_ACCOUNT + " " + INTEGER + " , "
+//                    + ID_CATEGORY_WEB + " " + INTEGER + " );";
+//            statement.executeUpdate(sql);
+//            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_COMMENT + " ( "
+//                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
+//                    + CONTENT_COMMENT + " " + STRING + " , "
+//                    + CONTENT_REPLY + " " + STRING + " , "
+//                    + ID_CATEGORY_COMMENT + " " + INTEGER + " );";
+//            statement.executeUpdate(sql);
+//            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_CATEGORY_COMMENT + " ( "
+//                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
+//                    + NAME_CATEGORY_COMMENT + " " + STRING + " );";
+//            statement.executeUpdate(sql);
+//            sql =  "CREATE TABLE IF NOT EXISTS " + TABLE_COMMENT_REPLY_POST + " ( "
+//                    + ID + " " + INTEGER + " " + PRIMARY_KEY + " " + AUTOINCREMENT + " , "
+//                    + ID_POST + " " + INTEGER + " , "
+//                    + ID_ACCOUNT + " " + INTEGER + " , "
+//                    + ID_COMMENT + " " + INTEGER + " , "
+//                    + DATE_COMMENT + " " + INTEGER + ");";
+//                    + TYPE + " " + STRING + " );";
             statement.executeUpdate(sql);
         } catch (SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-//    public static void main(String[] args) {
-//        try {
-//            DBConnection conn = new DBConnection();
-//            Connection con = DBConnection.getConnection();
-//            System.out.println("Opened");
-//            DatabaseMetaData m = con.getMetaData();
-//            ResultSet tables = m.getTables(null, null, "%", null);
-//            while(tables.next()){
-//                System.out.println(tables.getString(3));
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
-//    }
-
 }

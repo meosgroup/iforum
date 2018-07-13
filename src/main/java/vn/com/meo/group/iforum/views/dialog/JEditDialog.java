@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import vn.com.meo.group.iforum.models.Account;
-import vn.com.meo.group.iforum.models.CommentReply;
-import vn.com.meo.group.iforum.models.CommentReplyCategory;
+import vn.com.meo.group.iforum.models.Comment;
+import vn.com.meo.group.iforum.models.CommentCategory;
 
 /**
  *
@@ -47,21 +47,21 @@ public class JEditDialog {
         }
         return null;
     }
-    public static CommentReplyCategory showEditCommentReplyCategoryDialog(Component parent, 
-            CommentReplyCategory commentReplyCategory) {
+    public static CommentCategory showEditCommentReplyCategoryDialog(Component parent, 
+            CommentCategory commentReplyCategory) {
         EditCommentReplyCategoryDialog edit = new EditCommentReplyCategoryDialog();
         edit.getTfCommentCategory().setText(commentReplyCategory.getName());
         final JComponent[] inputs = new JComponent[]{edit};
         int result = JOptionPane.showConfirmDialog(parent, inputs, "Sửa loại bình luận", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            return new CommentReplyCategory(0, edit.getTfCommentCategory().getText());
+            return new CommentCategory(0, edit.getTfCommentCategory().getText());
         }
         return null;
     }
     
     public static ResultEditCommentReply showEditCommentReplyDialog(Component parent, 
-            CommentReplyCategory cmtRCurrent, Vector<CommentReplyCategory> commentReplyCategorys,
-            CommentReply cmt){
+            CommentCategory cmtRCurrent, Vector<CommentCategory> commentReplyCategorys,
+            Comment cmt){
         
         EditCommentReplyDialog edit = new EditCommentReplyDialog();
         final JComponent[] inputs = new JComponent[]{edit};
@@ -69,33 +69,33 @@ public class JEditDialog {
         tfComment.setText(cmt.getContentComment());
         JTextArea tfReply = edit.getTfReply();
         tfReply.setText(cmt.getContentReply());
-        JComboBox<CommentReplyCategory> cbCommentReplyCategory = edit.getCbCommentCategory();
+        JComboBox<CommentCategory> cbCommentReplyCategory = edit.getCbCommentCategory();
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) cbCommentReplyCategory.getModel();
-        for(CommentReplyCategory category: commentReplyCategorys){
+        for(CommentCategory category: commentReplyCategorys){
             comboBoxModel.addElement(category);
         }
         cbCommentReplyCategory.setSelectedItem(cmtRCurrent);
         int result = JOptionPane.showConfirmDialog(parent, inputs, "Sửa bình luận", JOptionPane.OK_CANCEL_OPTION);
-        CommentReplyCategory cmtReplyC = (CommentReplyCategory) cbCommentReplyCategory.getSelectedItem();
+        CommentCategory cmtReplyC = (CommentCategory) cbCommentReplyCategory.getSelectedItem();
         cmt.setContentComment(tfComment.getText());
         cmt.setContentReply(tfReply.getText());
-        return new ResultEditCommentReply(cmt, (CommentReplyCategory) cbCommentReplyCategory.getSelectedItem());
+        return new ResultEditCommentReply(cmt, (CommentCategory) cbCommentReplyCategory.getSelectedItem());
     }
     
     public static class ResultEditCommentReply{
-        private CommentReply commentReply;
-        private CommentReplyCategory commentReplyCategory;
+        private Comment commentReply;
+        private CommentCategory commentReplyCategory;
 
-        public ResultEditCommentReply(CommentReply commentReply, CommentReplyCategory commentReplyCategory) {
+        public ResultEditCommentReply(Comment commentReply, CommentCategory commentReplyCategory) {
             this.commentReply = commentReply;
             this.commentReplyCategory = commentReplyCategory;
         }
 
-        public CommentReply getCommentReply() {
+        public Comment getCommentReply() {
             return commentReply;
         }
 
-        public CommentReplyCategory getCommentReplyCategory() {
+        public CommentCategory getCommentReplyCategory() {
             return commentReplyCategory;
         }
     }

@@ -12,19 +12,19 @@ import java.util.Vector;
  *
  * @author nguye
  */
-public class CommentReplyCategory {
+public class CommentCategory {
 
     private int id;
     private String name;
-    private ArrayList<CommentReply> commentReplyList;
+    private Vector<Comment> commentReplyList;
 
-    public CommentReplyCategory(int id, String name) {
+    public CommentCategory(int id, String name) {
         this.id = id;
         this.name = name;
-        commentReplyList = new ArrayList<>();
+        commentReplyList = new Vector<>();
     }
     
-    public CommentReplyCategory(int id, String name, ArrayList<CommentReply> commentReplyList) {
+    public CommentCategory(int id, String name, Vector<Comment> commentReplyList) {
         this.id = id;
         this.name = name;
         this.commentReplyList = commentReplyList;
@@ -46,11 +46,11 @@ public class CommentReplyCategory {
         this.name = name;
     }
 
-    public ArrayList<CommentReply> getCommentReplyList() {
+    public Vector<Comment> getCommentReplyList() {
         return commentReplyList;
     }
 
-    public void setCommentReplyList(ArrayList<CommentReply> commentReplyList) {
+    public void setCommentReplyList(Vector<Comment> commentReplyList) {
         this.commentReplyList = commentReplyList;
     }
     
@@ -59,7 +59,7 @@ public class CommentReplyCategory {
         if(o == null){
             return false;
         }
-        CommentReplyCategory tmp = (CommentReplyCategory)o;
+        CommentCategory tmp = (CommentCategory)o;
         if(name.equals(tmp.getName())){
             return true;
         }

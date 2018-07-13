@@ -9,17 +9,17 @@ package vn.com.meo.group.iforum.models;
  *
  * @author nguye
  */
-public class CommentReply {
+public class Comment {
     private int id;
     private String contentComment;
     private String contentReply;
 
-    public CommentReply(int id, String contentComment, String contentReply) {
+    public Comment(int id, String contentComment, String contentReply) {
         this.id = id;
         this.contentComment = contentComment;
         this.contentReply = contentReply;
     }
-    public CommentReply(String contentComment, String contentReply) {
+    public Comment(String contentComment, String contentReply) {
         this.contentComment = contentComment;
         this.contentReply = contentReply;
     }
@@ -53,7 +53,7 @@ public class CommentReply {
         if(o == null){
             return false;
         }
-        CommentReply tmp = (CommentReply) o;
+        Comment tmp = (Comment) o;
         if(tmp.getContentComment().equals(contentComment) && tmp.getContentReply().equals(contentReply)){
             return true;
         }

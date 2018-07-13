@@ -27,7 +27,7 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
     private Cursor cursorDefault = new Cursor(Cursor.DEFAULT_CURSOR);
     public AutoCommentReplyTab() {
         initComponents();
-        pnLinkNews.setVisible(false);
+        pnPostNews.setVisible(false);
     }
 
     public JButton getBtnBackPage() {
@@ -60,10 +60,6 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
 
     public JTextField getTfLink() {
         return tfLink;
-    }
-
-    public JComboBox getCbCommentCount() {
-        return cbCommentCount;
     }
 
     public JCheckBox getCbLinkNews() {
@@ -108,8 +104,6 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         cbCommentCategory = new javax.swing.JComboBox();
-        jLabel11 = new javax.swing.JLabel();
-        cbCommentCount = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         cbUsers = new javax.swing.JComboBox();
         btnAdd = new javax.swing.JButton();
@@ -146,16 +140,6 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
         jLabel3.setText("Nội Dung Bình Luận");
 
         cbCommentCategory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setText("Số Lượng Bình Luận");
-
-        cbCommentCount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbCommentCount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCommentCountActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("User Đăng Bài");
@@ -269,43 +253,35 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(386, Short.MAX_VALUE)
+                        .addComponent(btnAdd)
+                        .addGap(382, 382, 382))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cbCommentCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel11))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnAdd)
-                                .addGap(10, 10, 10)))
-                        .addGap(10, 10, 10)
-                        .addComponent(cbCommentCount, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10)
-                        .addGap(10, 10, 10)
-                        .addComponent(cbUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbCommentCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbCommentCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10))))
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel3)
+                    .addComponent(cbUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAdd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -372,7 +348,9 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
                     .addComponent(jScrollPane2)))
         );
 
+        cbLinkNews.setBackground(new java.awt.Color(255, 255, 255));
         cbLinkNews.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbLinkNews.setSelected(true);
         cbLinkNews.setText("Bài Viết Có Sẵn");
         cbLinkNews.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,10 +412,6 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbCommentCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCommentCountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbCommentCountActionPerformed
-
     private void cbLinkNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLinkNewsActionPerformed
         // TODO add your handling code here:
         if(cbLinkNews.isSelected()){
@@ -460,12 +434,10 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox cbCommentCategory;
-    private javax.swing.JComboBox cbCommentCount;
     private javax.swing.JCheckBox cbLinkNews;
     private javax.swing.JComboBox cbUsers;
     private javax.swing.JComboBox cbWebCategory;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

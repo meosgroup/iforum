@@ -17,7 +17,7 @@ public class Website {
     private String name;
     private Vector<WebCategory> webCategorys;
     private Vector<Account> accounts;
-    private Vector<CommentReplyCategory> commentReplyCategorys;
+    private Vector<CommentCategory> commentReplyCategorys;
     public Website(int id, String nameWeb) {
         this.id = id;
         this.name = nameWeb;
@@ -40,7 +40,7 @@ public class Website {
     }
 
     public Website(int id, String nameWeb, Vector<WebCategory> categoryWebs, 
-            Vector<Account> accounts, Vector<CommentReplyCategory> commentReplyCategorys) {
+            Vector<Account> accounts, Vector<CommentCategory> commentReplyCategorys) {
         this.id = id;
         this.name = nameWeb;
         this.webCategorys = categoryWebs;
@@ -80,16 +80,25 @@ public class Website {
         this.accounts = accounts;
     }
 
-    public Vector<CommentReplyCategory> getCommentReplyCategorys() {
+    public Vector<CommentCategory> getCommentReplyCategorys() {
         return commentReplyCategorys;
     }
 
-    public void setCommentReplyCategorys(Vector<CommentReplyCategory> commentReplyCategorys) {
+    public void setCommentReplyCategorys(Vector<CommentCategory> commentReplyCategorys) {
         this.commentReplyCategorys = commentReplyCategorys;
     }
 
     public void setWebCategorys(Vector<WebCategory> webCategorys) {
         this.webCategorys = webCategorys;
     }
-
+    
+    public Vector<Account> getUsersIsRegister(){
+        Vector users = new Vector();
+        for(Account user: accounts){
+            if(user.isIsRegister()){
+                users.add(user);
+            }
+        }
+        return users;
+    }
 }

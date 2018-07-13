@@ -6,10 +6,10 @@
 package vn.com.meo.group.iforum;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import vn.com.meo.group.iforum.apps.webtretho.WebTreThoRequest;
+import vn.com.meo.group.iforum.apps.dao.AccountDao;
+import vn.com.meo.group.iforum.models.Account;
 
 /**
  *
@@ -113,6 +113,8 @@ public class Testrequest {
 //        String url = s.substring(start, finish);
 //        url = URLDecoder.decode(url, "ASCII");
 //        System.out.println(url.substring(url.indexOf("t=")+2));
-        System.out.println();
+//        System.out.println();
+
+
     }
 }

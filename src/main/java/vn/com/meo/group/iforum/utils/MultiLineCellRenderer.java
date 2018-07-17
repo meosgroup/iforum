@@ -6,6 +6,7 @@
 package vn.com.meo.group.iforum.utils;
 
 import java.awt.Component;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
@@ -16,11 +17,9 @@ import javax.swing.table.TableCellRenderer;
  *
  * @author buian
  */
-public class MultiLineCellRenderer extends JTextArea implements TableCellRenderer {
+public class MultiLineCellRenderer extends JLabel implements TableCellRenderer {
 
     public MultiLineCellRenderer() {
-        setLineWrap(true);
-        setWrapStyleWord(true);
         setOpaque(true);
     }
 
@@ -34,6 +33,11 @@ public class MultiLineCellRenderer extends JTextArea implements TableCellRendere
         }
         setFont(table.getFont());
         setText((value == null) ? "" : value.toString());
+        this.repaint();
+        int height = this.getPreferredSize().height;
+        if (table.getRowHeight(row) < height){
+            table.setRowHeight(row, height + 20);
+        }
         return this;
     }
 }

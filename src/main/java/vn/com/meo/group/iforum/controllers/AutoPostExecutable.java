@@ -97,7 +97,7 @@ public abstract class AutoPostExecutable extends Thread {
                     Thread.sleep(timeSleep * 60000);
                 } else {
                     autoPost.setStatus(AutoPost.FINISH);
-                    Thread.sleep(3000);
+                    Thread.sleep(10000);
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(AutoPostExecutable.class.getName()).log(Level.SEVERE, null, ex);

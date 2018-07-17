@@ -54,13 +54,13 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
             tbJobs.getColumnModel().getColumn(4).setMinWidth(70);
             tbJobs.getColumnModel().getColumn(4).setMaxWidth(70);
         }
-        tb = (DefaultTableModel) tbJobs.getModel();
-        Vector tmp = new Vector<>();
-        tmp.add("a\na\n\n\n\na");
-        tmp.add("a\na");
-        tmp.add("a\na");
-        tmp.add("a\na");
-        tb.addRow(tmp);
+//        tb = (DefaultTableModel) tbJobs.getModel();
+//        Vector tmp = new Vector<>();
+//        tmp.add("1");
+//        tmp.add("<html>a<br>b<br>c</html>");
+//        tmp.add("<html>a<br>b<br>c</html>");
+//        tmp.add("<html>a<br>b<br>c</html>");
+//        tb.addRow(tmp);
     }
 
     public JButton getBtnBackPage() {

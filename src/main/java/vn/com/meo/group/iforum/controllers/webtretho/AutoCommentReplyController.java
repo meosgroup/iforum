@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -215,16 +216,18 @@ public class AutoCommentReplyController extends BaseController implements Action
         int i = jobs.indexOf(au);
         if(i >=0){
             AutoPost autoPost = au.getAutoPost();
-            tableModel.setValueAt(autoPost.getUrl(), i, 1);
-            tableModel.setValueAt(autoPost.getCommentCategory().getName(), i, 2);
+            String url = String.format("<html><a href=\"%s\"><lable>%s<lable></a></html>", autoPost.getUrl(), autoPost.getUrl());
+            tableModel.setValueAt(url, i, 1);
+            tableModel.setValueAt("<html>" + autoPost.getCommentCategory().getName() + "</html>", i, 2);
             String tmp = "";
             if(autoPost.getLastComment() != null && autoPost.getLastUserComment()!= null){
-                tmp = String.format("-Comment: <%s>: %s | Reply: <%s>: %s", 
+                tmp = String.format("<html>%s: %s<br>%s: %s<br>Time: %s</html>", 
                         autoPost.getLastUserComment().getUsername(), autoPost.getLastComment().getContentComment(),
-                        autoPost.getUserPost().getUsername(), autoPost.getLastComment().getContentReply());
+                        autoPost.getUserPost().getUsername(), autoPost.getLastComment().getContentReply(),
+                        new Date(autoPost.getLastTimeComment()).toString());
             }
             tableModel.setValueAt(tmp, i, 3);
-            tableModel.setValueAt(autoPost.getStatus(), i, 4);
+            tableModel.setValueAt("<html>" + autoPost.getStatus() + "</html>", i, 4);
             return;
         }
     }

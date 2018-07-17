@@ -86,7 +86,7 @@ public class AutoCommentReplyController extends BaseController implements Action
             modelWebCategory.addElement(webCategory);
         }
         for (Account user : website.getAccounts()) {
-            if (user.isIsRegister()) {
+            if (user.getStatus() == Account.IS_REGISTER) {
                 modelUser.addElement(user);
             }
         }
@@ -196,11 +196,6 @@ public class AutoCommentReplyController extends BaseController implements Action
             JOptionPane.showMessageDialog(autoCommentReplyTab, "Bạn chưa chọn loại bình luận");
             return;
         }
-//        Integer commentCount = (int) cbCommentCount.getSelectedItem();
-//        if (commentCount == null) {
-//            JOptionPane.showMessageDialog(autoCommentReplyTab, "Bạn chưa chọn số lượng bình luận");
-//            return;
-//        }
 
         job.getAutoPost().setUserPost(userPost);
         job.getAutoPost().setCommentCategory(commentReplyCategory);
@@ -218,7 +213,6 @@ public class AutoCommentReplyController extends BaseController implements Action
     public static void updateUI(WebtrethoAutoPostExecutable au){
         
         int i = jobs.indexOf(au);
-        System.out.println(i);
         if(i >=0){
             AutoPost autoPost = au.getAutoPost();
             tableModel.setValueAt(autoPost.getUrl(), i, 1);
@@ -237,13 +231,14 @@ public class AutoCommentReplyController extends BaseController implements Action
 
     private void actionRunAutoComment() {
         int index = tbJobs.getSelectedRow();
-        System.out.println(index);
         if(index >= 0){
             if(jobs.get(index).getAutoPost().getStatus().equals(AutoPost.INIT)|| 
                     jobs.get(index).getAutoPost().getStatus().equals(AutoPost.PAUSE)){
                 jobs.get(index).start();
                 System.out.println("start");
             }
+        }else{
+            JOptionPane.showMessageDialog(autoCommentReplyTab, "Bạn chưa chọn task");
         }
     }
 

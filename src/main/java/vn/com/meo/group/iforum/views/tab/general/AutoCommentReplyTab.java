@@ -6,6 +6,7 @@
 package vn.com.meo.group.iforum.views.tab.general;
 
 import java.awt.Cursor;
+import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -13,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import vn.com.meo.group.iforum.utils.MultiLineCellRenderer;
 
 /**
  *
@@ -25,9 +28,39 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
      */
     private Cursor cursorForcus = new Cursor(Cursor.HAND_CURSOR);
     private Cursor cursorDefault = new Cursor(Cursor.DEFAULT_CURSOR);
+
     public AutoCommentReplyTab() {
         initComponents();
         pnPostNews.setVisible(false);
+        tbJobs.setDefaultRenderer(String.class, new MultiLineCellRenderer());
+        DefaultTableModel tb = new DefaultTableModel() {
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return String.class;
+            }
+        };
+        tb.setColumnIdentifiers(new String[]{"STT", "Tiêu Đề - Link", "Loại Bình Luận", "Chi Tiết", "Trạng Thái"});
+        tbJobs.setModel(tb);
+        tbJobs.setGridColor(new java.awt.Color(255, 255, 255));
+        tbJobs.setRowHeight(30);
+        jScrollPane1.setViewportView(tbJobs);
+        if (tbJobs.getColumnModel().getColumnCount() > 0) {
+            tbJobs.getColumnModel().getColumn(0).setMinWidth(50);
+            tbJobs.getColumnModel().getColumn(0).setMaxWidth(50);
+            tbJobs.getColumnModel().getColumn(1).setMinWidth(200);
+            tbJobs.getColumnModel().getColumn(1).setMaxWidth(200);
+            tbJobs.getColumnModel().getColumn(2).setMinWidth(200);
+            tbJobs.getColumnModel().getColumn(2).setMaxWidth(200);
+            tbJobs.getColumnModel().getColumn(4).setMinWidth(70);
+            tbJobs.getColumnModel().getColumn(4).setMaxWidth(70);
+        }
+        tb = (DefaultTableModel) tbJobs.getModel();
+        Vector tmp = new Vector<>();
+        tmp.add("a\na\n\n\n\na");
+        tmp.add("a\na");
+        tmp.add("a\na");
+        tmp.add("a\na");
+        tb.addRow(tmp);
     }
 
     public JButton getBtnBackPage() {
@@ -414,10 +447,10 @@ public class AutoCommentReplyTab extends javax.swing.JPanel {
 
     private void cbLinkNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLinkNewsActionPerformed
         // TODO add your handling code here:
-        if(cbLinkNews.isSelected()){
+        if (cbLinkNews.isSelected()) {
             pnLinkNews.setVisible(true);
             pnPostNews.setVisible(false);
-        }else{
+        } else {
             pnLinkNews.setVisible(false);
             pnPostNews.setVisible(true);
         }

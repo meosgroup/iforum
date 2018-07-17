@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vn.com.meo.group.iforum.selenium;
+package vn.com.meo.group.iforum.apps.selenium;
 
 import java.net.URL;
 import org.apache.commons.lang3.SystemUtils;

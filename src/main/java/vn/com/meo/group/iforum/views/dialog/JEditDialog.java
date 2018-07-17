@@ -36,13 +36,22 @@ public class JEditDialog {
         tfPassword.setText(account.getPassword());
         
         JCheckBox cbIsRegister = edit.getCbIsRegister();
-        cbIsRegister.setSelected(account.isIsRegister());
+        if(account.getStatus() == Account.IS_REGISTER){
+            cbIsRegister.setSelected(true);
+        }else{
+            cbIsRegister.setSelected(false);
+        }
+        
         
         final JComponent[] inputs = new JComponent[]{edit};
         int result = JOptionPane.showConfirmDialog(parent, inputs, "Sửa loại tài khoản", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
+            int status = Account.IS_NOT_REGISTER;
+            if(cbIsRegister.isSelected()){
+                status = Account.IS_REGISTER;
+            }
             Account tmp = new Account(0, tfUsername.getText(), tfPassword.getText(),
-                    tfEmail.getText(), cbIsRegister.isSelected());
+                    tfEmail.getText(), status);
             return tmp;
         }
         return null;

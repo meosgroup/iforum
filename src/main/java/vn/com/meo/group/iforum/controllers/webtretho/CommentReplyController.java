@@ -22,7 +22,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import vn.com.meo.group.iforum.apps.base.ToolBase;
-import vn.com.meo.group.iforum.apps.dao.CommentDao;
+import vn.com.meo.group.iforum.dao.CommentDao;
 import vn.com.meo.group.iforum.controllers.BaseController;
 import vn.com.meo.group.iforum.models.Comment;
 import vn.com.meo.group.iforum.models.CommentCategory;

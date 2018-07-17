@@ -18,7 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import vn.com.meo.group.iforum.apps.base.ToolBase;
-import vn.com.meo.group.iforum.apps.dao.CommentCategoryDao;
+import vn.com.meo.group.iforum.dao.CommentCategoryDao;
 import vn.com.meo.group.iforum.controllers.BaseController;
 import vn.com.meo.group.iforum.models.CommentCategory;
 import vn.com.meo.group.iforum.models.Website;

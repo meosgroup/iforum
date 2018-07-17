@@ -10,7 +10,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vn.com.meo.group.iforum.apps.base.ToolBase;
-import vn.com.meo.group.iforum.apps.dao.AutoPostDao;
+import vn.com.meo.group.iforum.dao.AutoPostDao;
 import vn.com.meo.group.iforum.models.Account;
 import vn.com.meo.group.iforum.models.AutoPost;
 import vn.com.meo.group.iforum.models.Comment;

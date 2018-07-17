@@ -10,11 +10,15 @@ package vn.com.meo.group.iforum.models;
  * @author loda
  */
 public class Account {
+    public static int IS_REGISTER = 1;
+    public static int IS_NOT_REGISTER = 0;
+    public static int CHECKING = 2;
+    
     private int id;
     private String username;
     private String password;
     private String email;
-    private boolean isRegister;
+    private int status;
     
     public Account() {
     }
@@ -23,10 +27,10 @@ public class Account {
         this.username = username;
         this.password = password;
     }
-    public Account(String username, String password, boolean  isRegister) {
+    public Account(String username, String password, int  status) {
         this.username = username;
         this.password = password;
-        this.isRegister = isRegister;
+        this.status = status;
     }
 
     public Account(int id, String username, String password) {
@@ -42,20 +46,20 @@ public class Account {
         this.email = email;
     }
     
-    public Account(int id, String username, String password, String email, boolean registry) {
+    public Account(int id, String username, String password, String email, int status) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.isRegister = registry;
+        this.status = status;
     }
 
-    public boolean isIsRegister() {
-        return isRegister;
+    public int getStatus() {
+        return status;
     }
 
-    public void setIsRegister(boolean isRegister) {
-        this.isRegister = isRegister;
+    public void setStatus(int isRegister) {
+        this.status = isRegister;
     }
 
     public int getId() {
@@ -90,6 +94,18 @@ public class Account {
         this.email = email;
     }
     
+    public String getStatusAsString(){
+        if(status == IS_REGISTER){
+            return "Đã đăng kí";
+        }
+        if(status == IS_NOT_REGISTER){
+            return "Chưa đăng kí";
+        }
+        if(status == CHECKING){
+            return "Đang kiểm tra";
+        }
+        return null;
+    }
     @Override
     public boolean equals(Object o){
         if(o == null){

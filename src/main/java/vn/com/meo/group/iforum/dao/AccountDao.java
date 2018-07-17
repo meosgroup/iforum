@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vn.com.meo.group.iforum.apps.dao;
+package vn.com.meo.group.iforum.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,11 +45,7 @@ public class AccountDao {
         ps.setString(2, account.getPassword());
         ps.setString(3, account.getEmail());
         ps.setInt(4, idWeb);
-        int register = 0;
-        if (account.isIsRegister()) {
-            register = 1;
-        }
-        ps.setInt(5, register);
+        ps.setInt(5, account.getStatus());
         ps.executeUpdate();
         Account tmp = getAccountByName(account.getUsername());
         if (tmp == null) {
@@ -66,11 +62,7 @@ public class AccountDao {
         ps.setString(1, account.getUsername());
         ps.setString(2, account.getPassword());
         ps.setString(3, account.getEmail());
-        int register = 0;
-        if (account.isIsRegister()) {
-            register = 1;
-        }
-        ps.setInt(4, register);
+        ps.setInt(4, account.getStatus());
         ps.setInt(5, account.getId());
         ps.executeUpdate();
 
@@ -97,11 +89,7 @@ public class AccountDao {
             String email = rs.getString(EMAIL);
             idWeb = rs.getInt(ID_WEB);
             int register = rs.getInt(REGISTER);
-            boolean isRegister = false;
-            if (register == 1) {
-                isRegister = true;
-            }
-            result.add(new Account(id, username, password, email, isRegister));
+            result.add(new Account(id, username, password, email, register));
         }
         return result;
     }
@@ -119,11 +107,7 @@ public class AccountDao {
                 String pass = rs.getString(PASSWORD);
                 String email = rs.getString(EMAIL);
                 int register = rs.getInt(REGISTER);
-                boolean isRegister = false;
-                if (register == 1) {
-                    isRegister = true;
-                }
-                return new Account(id, user, pass, email, isRegister);
+                return new Account(id, user, pass, email, register);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDao.class.getName()).log(Level.SEVERE, null, ex);

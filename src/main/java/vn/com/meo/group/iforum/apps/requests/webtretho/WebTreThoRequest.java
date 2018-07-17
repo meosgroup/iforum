@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vn.com.meo.group.iforum.apps.webtretho;
+package vn.com.meo.group.iforum.apps.requests.webtretho;
 
 import com.mashape.unirest.http.Headers;
 import com.mashape.unirest.http.HttpResponse;

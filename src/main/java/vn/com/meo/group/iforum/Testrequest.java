@@ -8,7 +8,7 @@ package vn.com.meo.group.iforum;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import vn.com.meo.group.iforum.apps.dao.AccountDao;
+import vn.com.meo.group.iforum.dao.AccountDao;
 import vn.com.meo.group.iforum.models.Account;
 
 /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vn.com.meo.group.iforum.apps.dao;
+package vn.com.meo.group.iforum.dao;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;

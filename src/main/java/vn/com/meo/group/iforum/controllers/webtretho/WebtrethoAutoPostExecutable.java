@@ -67,11 +67,10 @@ public class WebtrethoAutoPostExecutable extends AutoPostExecutable {
             tool.logout();
             tool.login(userComment.getUsername(), userComment.getPassword());
         }
-//                System.out.println("login comment: " + tool.isLogin());
         if (userComment.getUsername().equals(tool.isLogin())) {
             String urlReply = tool.comment(idThread, cmt.getContentComment());
 
-            if (urlReply != null) {
+            if (tool.isNumber(urlReply)) {
                 tool.log("User comment: " + userComment.getUsername()+ " Id comment: " + urlReply);
                 autoPost.setLastComment(cmt);
                 autoPost.setLastUserComment(userComment);

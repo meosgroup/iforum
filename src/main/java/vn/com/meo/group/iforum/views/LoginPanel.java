@@ -65,6 +65,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         tfUsername.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tfUsername.setForeground(new java.awt.Color(51, 51, 51));
+        tfUsername.setText("admin");
         tfUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 102, 255)));
         tfUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +76,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         tfPassword.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tfPassword.setForeground(new java.awt.Color(51, 51, 51));
+        tfPassword.setText("admin");
         tfPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 102, 255)));
         jPanel1.add(tfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 216, 188, -1));
 

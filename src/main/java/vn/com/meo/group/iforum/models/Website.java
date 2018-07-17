@@ -95,7 +95,7 @@ public class Website {
     public Vector<Account> getUsersIsRegister(){
         Vector users = new Vector();
         for(Account user: accounts){
-            if(user.isIsRegister()){
+            if(user.getStatus() == Account.IS_REGISTER){
                 users.add(user);
             }
         }

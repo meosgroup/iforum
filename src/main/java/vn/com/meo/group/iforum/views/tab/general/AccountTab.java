@@ -123,24 +123,9 @@ public class AccountTab extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "User/Email", "Password", "Đã Đăng Kí"
+                "STT", "User/Email", "Password", "Trạng Thái"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tbUsers.setGridColor(new java.awt.Color(255, 255, 255));
         tbUsers.setRowHeight(30);
         jScrollPane3.setViewportView(tbUsers);
@@ -254,6 +239,7 @@ public class AccountTab extends javax.swing.JPanel {
         tfPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         cbUserIsRegister.setBackground(new java.awt.Color(255, 255, 255));
+        cbUserIsRegister.setSelected(true);
         cbUserIsRegister.setText("Tài khoản đã đăng kí");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
